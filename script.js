@@ -10,23 +10,48 @@ function startGame () {
     sold6 = new Soldier1(6);
     sold7 = new Soldier1(7);
     sold8 = new Soldier1(8);
-    sold9 = new Soldier2(9);
-    sold10 = new Soldier2(10);
-    sold11 = new Soldier2(11);
-    sold12 = new Soldier2(12);
-    sold13 = new Soldier2(13);
-    sold14 = new Soldier2(14);
-    sold15 = new Soldier2(15);
-    sold16 = new Soldier2(16);
-    sold17 = new Soldier2(17);
-    sold18 = new Soldier2(18);
-    sold19 = new Soldier2(19);
-    sold20 = new Soldier2(20);
-    sold21 = new Soldier2(21);
-    sold22 = new Soldier2(22);
-    sold23 = new Soldier2(23);
-    sold24 = new Soldier2(24);
+    sold9 = new Soldier1(9);
+    sold10 = new Soldier1(10);
+    sold11 = new Soldier1(11);
+    sold12 = new Soldier1(12);
+    sold13 = new Soldier1(13);
+    sold14 = new Soldier1(14);
+    sold15 = new Soldier1(15);
+    sold16 = new Soldier1(16);
+    sold17 = new Soldier1(17);
+    sold18 = new Soldier1(18);
+    sold19 = new Soldier1(19);
+    sold20 = new Soldier1(20);
+    sold21 = new Soldier1(21);
+    sold22 = new Soldier1(22);
+    sold23 = new Soldier1(23);
+    sold24 = new Soldier1(24);
+
     player2 = new Character(30, 30, "green", 200, 200);
+    sold101 = new Soldier2(1);
+    sold102 = new Soldier2(2);
+    sold103 = new Soldier2(3);
+    sold104 = new Soldier2(4);
+    sold105 = new Soldier2(5);
+    sold106 = new Soldier2(6);
+    sold107 = new Soldier2(7);
+    sold108 = new Soldier2(8);
+    sold109 = new Soldier2(9);
+    sold110 = new Soldier2(10);
+    sold111 = new Soldier2(11);
+    sold112 = new Soldier2(12);
+    sold113 = new Soldier2(13);
+    sold114 = new Soldier2(14);
+    sold115 = new Soldier2(15);
+    sold116 = new Soldier2(16);
+    sold117 = new Soldier2(17);
+    sold118 = new Soldier2(18);
+    sold119 = new Soldier2(19);
+    sold120 = new Soldier2(20);
+    sold121 = new Soldier2(21);
+    sold122 = new Soldier2(22);
+    sold123 = new Soldier2(23);
+    sold124 = new Soldier2(24);
   }
   
 }
@@ -34,6 +59,7 @@ function startGame () {
 function updateGame() {
   if (sold1.colition(player2)) {
     console.log('Muere')
+    myGameArea.stop();
   }
   myGameArea.clear();
   myGameArea.back();
@@ -63,7 +89,32 @@ function updateGame() {
   sold22.newPos();
   sold23.newPos();
   sold24.newPos();
+
   player2.newPos();
+  sold101.newPos();
+  sold102.newPos();
+  sold103.newPos();
+  sold104.newPos();
+  sold105.newPos();
+  sold106.newPos();
+  sold107.newPos();
+  sold108.newPos();
+  sold109.newPos();
+  sold110.newPos();
+  sold111.newPos();
+  sold112.newPos();
+  sold113.newPos();
+  sold114.newPos();
+  sold115.newPos();
+  sold116.newPos();
+  sold117.newPos();
+  sold118.newPos();
+  sold119.newPos();
+  sold120.newPos();
+  sold121.newPos();
+  sold122.newPos();
+  sold123.newPos();
+  sold124.newPos();
 
   player.update();
   sold1.update();
@@ -90,7 +141,32 @@ function updateGame() {
   sold22.update();
   sold23.update();
   sold24.update();
+
   player2.update();
+  sold101.update();
+  sold102.update();
+  sold103.update();
+  sold104.update();
+  sold105.update();
+  sold106.update();
+  sold107.update();
+  sold108.update();
+  sold109.update();
+  sold110.update();
+  sold111.update();
+  sold112.update();
+  sold113.update();
+  sold114.update();
+  sold115.update();
+  sold116.update();
+  sold117.update();
+  sold118.update();
+  sold119.update();
+  sold120.update();
+  sold121.update();
+  sold122.update();
+  sold123.update();
+  sold124.update();
 }
 
 var myGameArea = {
@@ -122,76 +198,11 @@ function Character (width, height, color, x, y) {
   this.y = y;
   this.movementX = 0;
   this.movementY = 0;
-  
-  ctx = myGameArea.context;
-
-//   this.sol1 = function () {
-//     ctx.fillStyle = "orange";
-//     ctx.fillRect(this.x + 40, this.y, this.width, this.height);
-// }
-//   this.sol2 = function () {
-//     ctx.fillStyle = "orange";
-//     ctx.fillRect(this.x + 40, this.y + 40, this.width, this.height);
-//   }
-//   this.sol3 = function () {
-//     ctx.fillStyle = "orange";
-//     ctx.fillRect(this.x + 40, this.y - 40, this.width, this.height);
-//   }
-//   this.sol4 = function () {
-//     ctx.fillStyle = "orange";
-//     ctx.fillRect(this.x - 40, this.y, this.width, this.height);
-//   }
-//   this.sol5 = function () {
-//     ctx.fillStyle = "orange";
-//     ctx.fillRect(this.x - 40, this.y + 40, this.width, this.height);
-//   }
-//   this.sol6 = function () {
-//     ctx.fillStyle = "orange";
-//     ctx.fillRect(this.x - 40, this.y - 40, this.width, this.height);
-//   }
-//   this.sol7 = function () {
-//     ctx.fillStyle = "orange";
-//     ctx.fillRect(this.x, this.y + 40, this.width, this.height);
-//   }
-//   this.sol8 = function () {
-//     ctx.fillStyle = "orange";
-//     ctx.fillRect(this.x, this.y - 40, this.width, this.height);
-//   }
-  
 
   this.update = function () {
     ctx = myGameArea.context;
     ctx.fillStyle = color;
     ctx.fillRect(this.x, this.y, this.width, this.height);
-    
-
-    // ctx.fillStyle = "orange";
-    // ctx.fillRect(this.x + 40, this.y, this.width, this.height);
-    // ctx.fillRect(this.x + 40, this.y + 40, this.width, this.height);
-    // ctx.fillRect(this.x + 40, this.y - 40, this.width, this.height);
-    // ctx.fillRect(this.x - 40, this.y, this.width, this.height);
-    // ctx.fillRect(this.x - 40, this.y + 40, this.width, this.height);
-    // ctx.fillRect(this.x - 40, this.y - 40, this.width, this.height);
-    // ctx.fillRect(this.x, this.y + 40, this.width, this.height);
-    // ctx.fillRect(this.x, this.y - 40, this.width, this.height);
-
-    // ctx.fillStyle = "lightblue";
-    // ctx.fillRect(this.x + 80, this.y, this.width, this.height);
-    // ctx.fillRect(this.x + 80, this.y + 80, this.width, this.height);
-    // ctx.fillRect(this.x + 80, this.y + 40, this.width, this.height);
-    // ctx.fillRect(this.x + 80, this.y - 80, this.width, this.height);
-    // ctx.fillRect(this.x + 80, this.y - 40, this.width, this.height);
-    // ctx.fillRect(this.x - 80, this.y, this.width, this.height);
-    // ctx.fillRect(this.x - 80, this.y + 80, this.width, this.height);
-    // ctx.fillRect(this.x - 80, this.y + 40, this.width, this.height);
-    // ctx.fillRect(this.x - 80, this.y - 80, this.width, this.height);
-    // ctx.fillRect(this.x - 80, this.y - 40, this.width, this.height);
-    // ctx.fillRect(this.x, this.y + 80, this.width, this.height);
-    // ctx.fillRect(this.x + 40, this.y + 80, this.width, this.height);
-    // ctx.fillRect(this.x - 40, this.y + 80, this.width, this.height);
-    // ctx.fillRect(this.x, this.y - 80, this.width, this.height);
-    // ctx.fillRect(this.x + 40, this.y - 80, this.width, this.height);
-    // ctx.fillRect(this.x - 40, this.y - 80, this.width, this.height);
   };
   
   this.newPos = function () {
@@ -246,76 +257,100 @@ function Soldier1 (lugar) {
   if (lugar === 1) {
     this.x = player.x + 40;
     this.y = player.y;
-  } else if (lugar === 2) {
+  } 
+  else if (lugar === 2) {
     this.x = player.x + 40;
     this.y = player.y + 40;
-  } else if (lugar === 3) {
+  } 
+  else if (lugar === 3) {
     this.x = player.x + 40;
     this.y = player.y - 40;
-  } else if (lugar === 4) {
+  } 
+  else if (lugar === 4) {
     this.x = player.x - 40;
     this.y = player.y;
-  } else if (lugar === 5) {
+  } 
+  else if (lugar === 5) {
     this.x = player.x - 40;
     this.y = player.y + 40;
-  } else if (lugar === 6) {
+  } 
+  else if (lugar === 6) {
     this.x = player.x - 40;
     this.y = player.y - 40;
-  } else if (lugar === 7) {
+  } 
+  else if (lugar === 7) {
     this.x = player.x;
     this.y = player.y + 40;
-  } else if (lugar === 8) {
+  } 
+  else if (lugar === 8) {
     this.x = player.x;
     this.y = player.y - 40;
-  } else if (lugar === 9) {
+  } 
+  else if (lugar === 9) {
     this.x = player.x + 80;
     this.y = player.y;
-  } else if (lugar === 10) {
+  } 
+  else if (lugar === 10) {
     this.x = player.x + 80;
     this.y = player.y + 80;
-  } else if (lugar === 11) {
+  } 
+  else if (lugar === 11) {
     this.x = player.x + 80;
     this.y = player.y + 40;
-  } else if (lugar === 12) {
+  } 
+  else if (lugar === 12) {
     this.x = player.x + 80;
     this.y = player.y - 80;
-  } else if (lugar === 13) {
+  } 
+  else if (lugar === 13) {
     this.x = player.x + 80;
     this.y = player.y - 40;
-  } else if (lugar === 14) {
+  } 
+  else if (lugar === 14) {
     this.x = player.x - 80;
     this.y = player.y;
-  } else if (lugar === 15) {
+  } 
+  else if (lugar === 15) {
     this.x = player.x - 80;
     this.y = player.y + 80;
-  } else if (lugar === 16) {
+  } 
+  else if (lugar === 16) {
     this.x = player.x - 80;
     this.y = player.y + 40;
-  } else if (lugar === 17) {
+  } 
+  else if (lugar === 17) {
     this.x = player.x - 80;
     this.y = player.y - 80;
-  } else if (lugar === 18) {
+  } 
+  else if (lugar === 18) {
     this.x = player.x - 80;
     this.y = player.y - 40;
-  } else if (lugar === 19) {
+  } 
+  else if (lugar === 19) {
     this.x = player.x;
     this.y = player.y + 80;
-  } else if (lugar === 20) {
+  } 
+  else if (lugar === 20) {
     this.x = player.x + 40;
     this.y = player.y + 80;
-  } else if (lugar === 21) {
+  } 
+  else if (lugar === 21) {
     this.x = player.x - 40; 
     this.y = player.y + 80;
-  } else if (lugar === 22) {
+  } 
+  else if (lugar === 22) {
     this.x = player.x; 
     this.y = player.y - 80;
-  } else if (lugar === 23) {
+  } 
+  else if (lugar === 23) {
     this.x = player.x + 40; 
     this.y = player.y - 80;
-  } else if (lugar === 24) {
+  } 
+  else if (lugar === 24) {
     this.x = player.x - 40; 
     this.y = player.y - 80;
   }
+
   this.movementX = 0;
   this.movementY = 0;
 
@@ -368,13 +403,13 @@ function Soldier1 (lugar) {
   }
 } 
 
-  else if (this.x === 1030 && lugar === 4) {
+  else if (this.x === 950 && lugar === 4) {
       if (this.movementX === 5) {
         this.x;
     } else {
       this.x += this.movementX;
     } 
-  } else if(this.x === 120 && lugar === 4) {
+  } else if(this.x === 40 && lugar === 4) {
     if (this.movementX === -5) {
       this.x;
     } else {
@@ -382,13 +417,13 @@ function Soldier1 (lugar) {
     }
   } 
 
-  else if (this.x === 1030 && lugar === 5) {
+  else if (this.x === 950 && lugar === 5) {
     if (this.movementX === 5) {
       this.x;
   } else {
     this.x += this.movementX;
   } 
-} else if(this.x === 120 && lugar === 5) {
+} else if(this.x === 40 && lugar === 5) {
   if (this.movementX === -5) {
     this.x;
   } else {
@@ -396,13 +431,13 @@ function Soldier1 (lugar) {
   }
 } 
 
-else if (this.x === 1030 && lugar === 6) {
+else if (this.x === 950 && lugar === 6) {
   if (this.movementX === 5) {
     this.x;
 } else {
   this.x += this.movementX;
 } 
-} else if(this.x === 120 && lugar === 6) {
+} else if(this.x === 40 && lugar === 6) {
 if (this.movementX === -5) {
   this.x;
 } else {
@@ -410,13 +445,13 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 1030 && lugar === 7) {
+else if (this.x === 990 && lugar === 7) {
   if (this.movementX === 5) {
     this.x;
 } else {
   this.x += this.movementX;
 } 
-} else if(this.x === 120 && lugar === 7) {
+} else if(this.x === 80 && lugar === 7) {
 if (this.movementX === -5) {
   this.x;
 } else {
@@ -424,13 +459,13 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 1030 && lugar === 8) {
+else if (this.x === 990 && lugar === 8) {
   if (this.movementX === 5) {
     this.x;
 } else {
   this.x += this.movementX;
 } 
-} else if(this.x === 120 && lugar === 8) {
+} else if(this.x === 80 && lugar === 8) {
 if (this.movementX === -5) {
   this.x;
 } else {
@@ -438,13 +473,13 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 1030 && lugar === 9) {
+else if (this.x === 1070 && lugar === 9) {
   if (this.movementX === 5) {
     this.x;
 } else {
   this.x += this.movementX;
 } 
-} else if(this.x === 120 && lugar === 9) {
+} else if(this.x === 160 && lugar === 9) {
 if (this.movementX === -5) {
   this.x;
 } else {
@@ -452,13 +487,13 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 1030 && lugar === 10) {
+else if (this.x === 1070 && lugar === 10) {
   if (this.movementX === 5) {
     this.x;
 } else {
   this.x += this.movementX;
 } 
-} else if(this.x === 120 && lugar === 10) {
+} else if(this.x === 160 && lugar === 10) {
 if (this.movementX === -5) {
   this.x;
 } else {
@@ -466,13 +501,13 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 1030 && lugar === 11) {
+else if (this.x === 1070 && lugar === 11) {
   if (this.movementX === 5) {
     this.x;
 } else {
   this.x += this.movementX;
 } 
-} else if(this.x === 120 && lugar === 11) {
+} else if(this.x === 160 && lugar === 11) {
 if (this.movementX === -5) {
   this.x;
 } else {
@@ -480,13 +515,13 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 1030 && lugar === 12) {
+else if (this.x === 1070 && lugar === 12) {
   if (this.movementX === 5) {
     this.x;
 } else {
   this.x += this.movementX;
 } 
-} else if(this.x === 120 && lugar === 12) {
+} else if(this.x === 160 && lugar === 12) {
 if (this.movementX === -5) {
   this.x;
 } else {
@@ -494,13 +529,13 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 1030 && lugar === 13) {
+else if (this.x === 1070 && lugar === 13) {
   if (this.movementX === 5) {
     this.x;
 } else {
   this.x += this.movementX;
 } 
-} else if(this.x === 120 && lugar === 13) {
+} else if(this.x === 160 && lugar === 13) {
 if (this.movementX === -5) {
   this.x;
 } else {
@@ -508,13 +543,13 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 1030 && lugar === 14) {
+else if (this.x === 910 && lugar === 14) {
   if (this.movementX === 5) {
     this.x;
 } else {
   this.x += this.movementX;
 } 
-} else if(this.x === 120 && lugar === 14) {
+} else if(this.x === 0 && lugar === 14) {
 if (this.movementX === -5) {
   this.x;
 } else {
@@ -522,13 +557,13 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 1030 && lugar === 15) {
+else if (this.x === 910 && lugar === 15) {
   if (this.movementX === 5) {
     this.x;
 } else {
   this.x += this.movementX;
 } 
-} else if(this.x === 120 && lugar === 15) {
+} else if(this.x === 0 && lugar === 15) {
 if (this.movementX === -5) {
   this.x;
 } else {
@@ -536,13 +571,13 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 1030 && lugar === 16) {
+else if (this.x === 910 && lugar === 16) {
   if (this.movementX === 5) {
     this.x;
 } else {
   this.x += this.movementX;
 } 
-} else if(this.x === 120 && lugar === 16) {
+} else if(this.x === 0 && lugar === 16) {
 if (this.movementX === -5) {
   this.x;
 } else {
@@ -550,13 +585,13 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 1030 && lugar === 17) {
+else if (this.x === 910 && lugar === 17) {
   if (this.movementX === 5) {
     this.x;
 } else {
   this.x += this.movementX;
 } 
-} else if(this.x === 120 && lugar === 17) {
+} else if(this.x === 0 && lugar === 17) {
 if (this.movementX === -5) {
   this.x;
 } else {
@@ -564,13 +599,13 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 1030 && lugar === 18) {
+else if (this.x === 910 && lugar === 18) {
   if (this.movementX === 5) {
     this.x;
 } else {
   this.x += this.movementX;
 } 
-} else if(this.x === 120 && lugar === 18) {
+} else if(this.x === 0 && lugar === 18) {
 if (this.movementX === -5) {
   this.x;
 } else {
@@ -578,13 +613,13 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 1030 && lugar === 19) {
+else if (this.x === 990 && lugar === 19) {
   if (this.movementX === 5) {
     this.x;
 } else {
   this.x += this.movementX;
 } 
-} else if(this.x === 120 && lugar === 19) {
+} else if(this.x === 80 && lugar === 19) {
 if (this.movementX === -5) {
   this.x;
 } else {
@@ -606,13 +641,13 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 1030 && lugar === 21) {
+else if (this.x === 950 && lugar === 21) {
   if (this.movementX === 5) {
     this.x;
 } else {
   this.x += this.movementX;
 } 
-} else if(this.x === 120 && lugar === 21) {
+} else if(this.x === 40 && lugar === 21) {
 if (this.movementX === -5) {
   this.x;
 } else {
@@ -620,13 +655,13 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 1030 && lugar === 22) {
+else if (this.x === 990 && lugar === 22) {
   if (this.movementX === 5) {
     this.x;
 } else {
   this.x += this.movementX;
 } 
-} else if(this.x === 120 && lugar === 22) {
+} else if(this.x === 80 && lugar === 22) {
 if (this.movementX === -5) {
   this.x;
 } else {
@@ -648,13 +683,13 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 1030 && lugar === 24) {
+else if (this.x === 950 && lugar === 24) {
   if (this.movementX === 5) {
     this.x;
 } else {
   this.x += this.movementX;
 } 
-} else if(this.x === 120 && lugar === 24) {
+} else if(this.x === 40 && lugar === 24) {
 if (this.movementX === -5) {
   this.x;
 } else {
@@ -694,13 +729,13 @@ if (this.movementX === -5) {
     }
   }
 
-  else if (this.y === 670 && lugar === 3) {
+  else if (this.y === 590 && lugar === 3) {
     if (this.movementY === 5) {
       this.y;
     } else {
       this.y += this.movementY;
   }
-} else if(this.y === 120 && lugar === 3) {
+} else if(this.y === 40 && lugar === 3) {
   if (this.movementY === -5) {
     this.y;
   } else {
@@ -708,13 +743,13 @@ if (this.movementX === -5) {
   }
 }
 
-else if (this.y === 670 && lugar === 4) {
+else if (this.y === 630 && lugar === 4) {
   if (this.movementY === 5) {
     this.y;
   } else {
     this.y += this.movementY;
 }
-} else if(this.y === 120 && lugar === 4) {
+} else if(this.y === 80 && lugar === 4) {
 if (this.movementY === -5) {
   this.y;
 } else {
@@ -736,13 +771,13 @@ if (this.movementY === -5) {
 }
 }
 
-else if (this.y === 670 && lugar === 6) {
+else if (this.y === 590 && lugar === 6) {
   if (this.movementY === 5) {
     this.y;
   } else {
     this.y += this.movementY;
 }
-} else if(this.y === 120 && lugar === 6) {
+} else if(this.y === 40 && lugar === 6) {
 if (this.movementY === -5) {
   this.y;
 } else {
@@ -764,13 +799,13 @@ if (this.movementY === -5) {
 }
 }
 
-else if (this.y === 670 && lugar === 8) {
+else if (this.y === 590 && lugar === 8) {
   if (this.movementY === 5) {
     this.y;
   } else {
     this.y += this.movementY;
 }
-} else if(this.y === 120 && lugar === 8) {
+} else if(this.y === 40 && lugar === 8) {
 if (this.movementY === -5) {
   this.y;
 } else {
@@ -778,13 +813,13 @@ if (this.movementY === -5) {
 }
 }
 
-else if (this.y === 670 && lugar === 9) {
+else if (this.y === 630 && lugar === 9) {
   if (this.movementY === 5) {
     this.y;
   } else {
     this.y += this.movementY;
 }
-} else if(this.y === 120 && lugar === 9) {
+} else if(this.y === 80 && lugar === 9) {
 if (this.movementY === -5) {
   this.y;
 } else {
@@ -792,13 +827,13 @@ if (this.movementY === -5) {
 }
 }
 
-else if (this.y === 670 && lugar === 10) {
+else if (this.y === 710 && lugar === 10) {
   if (this.movementY === 5) {
     this.y;
   } else {
     this.y += this.movementY;
 }
-} else if(this.y === 120 && lugar === 10) {
+} else if(this.y === 160 && lugar === 10) {
 if (this.movementY === -5) {
   this.y;
 } else {
@@ -820,13 +855,13 @@ if (this.movementY === -5) {
 }
 }
 
-else if (this.y === 670 && lugar === 12) {
+else if (this.y === 550 && lugar === 12) {
   if (this.movementY === 5) {
     this.y;
   } else {
     this.y += this.movementY;
 }
-} else if(this.y === 120 && lugar === 12) {
+} else if(this.y === 0 && lugar === 12) {
 if (this.movementY === -5) {
   this.y;
 } else {
@@ -834,13 +869,13 @@ if (this.movementY === -5) {
 }
 }
 
-else if (this.y === 670 && lugar === 13) {
+else if (this.y === 590 && lugar === 13) {
   if (this.movementY === 5) {
     this.y;
   } else {
     this.y += this.movementY;
 }
-} else if(this.y === 120 && lugar === 13) {
+} else if(this.y === 40 && lugar === 13) {
 if (this.movementY === -5) {
   this.y;
 } else {
@@ -848,13 +883,13 @@ if (this.movementY === -5) {
 }
 }
 
-else if (this.y === 670 && lugar === 14) {
+else if (this.y === 630 && lugar === 14) {
   if (this.movementY === 5) {
     this.y;
   } else {
     this.y += this.movementY;
 }
-} else if(this.y === 120 && lugar === 14) {
+} else if(this.y === 80 && lugar === 14) {
 if (this.movementY === -5) {
   this.y;
 } else {
@@ -862,13 +897,13 @@ if (this.movementY === -5) {
 }
 }
 
-else if (this.y === 670 && lugar === 15) {
+else if (this.y === 710 && lugar === 15) {
   if (this.movementY === 5) {
     this.y;
   } else {
     this.y += this.movementY;
 }
-} else if(this.y === 120 && lugar === 15) {
+} else if(this.y === 160 && lugar === 15) {
 if (this.movementY === -5) {
   this.y;
 } else {
@@ -890,13 +925,13 @@ if (this.movementY === -5) {
 }
 }
 
-else if (this.y === 670 && lugar === 17) {
+else if (this.y === 550 && lugar === 17) {
   if (this.movementY === 5) {
     this.y;
   } else {
     this.y += this.movementY;
 }
-} else if(this.y === 120 && lugar === 17) {
+} else if(this.y === 0 && lugar === 17) {
 if (this.movementY === -5) {
   this.y;
 } else {
@@ -904,13 +939,13 @@ if (this.movementY === -5) {
 }
 }
 
-else if (this.y === 670 && lugar === 18) {
+else if (this.y === 590 && lugar === 18) {
   if (this.movementY === 5) {
     this.y;
   } else {
     this.y += this.movementY;
 }
-} else if(this.y === 120 && lugar === 18) {
+} else if(this.y === 40 && lugar === 18) {
 if (this.movementY === -5) {
   this.y;
 } else {
@@ -918,13 +953,13 @@ if (this.movementY === -5) {
 }
 }
 
-else if (this.y === 670 && lugar === 19) {
+else if (this.y === 710 && lugar === 19) {
   if (this.movementY === 5) {
     this.y;
   } else {
     this.y += this.movementY;
 }
-} else if(this.y === 120 && lugar === 19) {
+} else if(this.y === 160 && lugar === 19) {
 if (this.movementY === -5) {
   this.y;
 } else {
@@ -932,13 +967,13 @@ if (this.movementY === -5) {
 }
 }
 
-else if (this.y === 670 && lugar === 20) {
+else if (this.y === 710 && lugar === 20) {
   if (this.movementY === 5) {
     this.y;
   } else {
     this.y += this.movementY;
 }
-} else if(this.y === 120 && lugar === 20) {
+} else if(this.y === 160 && lugar === 20) {
 if (this.movementY === -5) {
   this.y;
 } else {
@@ -946,13 +981,13 @@ if (this.movementY === -5) {
 }
 }
 
-else if (this.y === 670 && lugar === 21) {
+else if (this.y === 710 && lugar === 21) {
   if (this.movementY === 5) {
     this.y;
   } else {
     this.y += this.movementY;
 }
-} else if(this.y === 120 && lugar === 21) {
+} else if(this.y === 160 && lugar === 21) {
 if (this.movementY === -5) {
   this.y;
 } else {
@@ -960,13 +995,13 @@ if (this.movementY === -5) {
 }
 }
 
-else if (this.y === 670 && lugar === 22) {
+else if (this.y === 550 && lugar === 22) {
   if (this.movementY === 5) {
     this.y;
   } else {
     this.y += this.movementY;
 }
-} else if(this.y === 120 && lugar === 22) {
+} else if(this.y === 0 && lugar === 22) {
 if (this.movementY === -5) {
   this.y;
 } else {
@@ -974,13 +1009,13 @@ if (this.movementY === -5) {
 }
 }
 
-else if (this.y === 670 && lugar === 23) {
+else if (this.y === 550 && lugar === 23) {
   if (this.movementY === 5) {
     this.y;
   } else {
     this.y += this.movementY;
 }
-} else if(this.y === 120 && lugar === 23) {
+} else if(this.y === 0 && lugar === 23) {
 if (this.movementY === -5) {
   this.y;
 } else {
@@ -988,13 +1023,13 @@ if (this.movementY === -5) {
 }
 }
 
-else if (this.y === 670 && lugar === 24) {
+else if (this.y === 550 && lugar === 24) {
   if (this.movementY === 5) {
     this.y;
   } else {
     this.y += this.movementY;
 }
-} else if(this.y === 120 && lugar === 24) {
+} else if(this.y === 0 && lugar === 24) {
 if (this.movementY === -5) {
   this.y;
 } else {
@@ -1006,7 +1041,816 @@ if (this.movementY === -5) {
       this.y += this.movementY;
     }
 
+  };
+  this.left = function () {
+    return this.x;
+  };
+  this.right = function () {
+    return this.x + this.width;
+  };
+  this.top = function () {
+    return this.y;
+  };
+  this.bottom = function () {
+    return this.y + this.height;
+  };
+  this.colition = function(soldier) {
+    return !(this.bottom() < soldier.top() || 
+    (this.top() > soldier.bottom()) ||
+    (this.right()< soldier.left()) ||
+    (this.left() > soldier.right()))
+}
+};
 
+function Soldier2 (lugar) {
+  this.width = player2.width;
+  this.height = player2.height;
+  if (lugar === 1) {
+    this.x = player2.x + 40;
+    this.y = player2.y;
+  } 
+  else if (lugar === 2) {
+    this.x = player2.x + 40;
+    this.y = player2.y + 40;
+  } 
+  else if (lugar === 3) {
+    this.x = player2.x + 40;
+    this.y = player2.y - 40;
+  } 
+  else if (lugar === 4) {
+    this.x = player2.x - 40;
+    this.y = player2.y;
+  } 
+  else if (lugar === 5) {
+    this.x = player2.x - 40;
+    this.y = player2.y + 40;
+  } 
+  else if (lugar === 6) {
+    this.x = player2.x - 40;
+    this.y = player2.y - 40;
+  } 
+  else if (lugar === 7) {
+    this.x = player2.x;
+    this.y = player2.y + 40;
+  } 
+  else if (lugar === 8) {
+    this.x = player2.x;
+    this.y = player2.y - 40;
+  } 
+  else if (lugar === 9) {
+    this.x = player2.x + 80;
+    this.y = player2.y;
+  } 
+  else if (lugar === 10) {
+    this.x = player2.x + 80;
+    this.y = player2.y + 80;
+  } 
+  else if (lugar === 11) {
+    this.x = player2.x + 80;
+    this.y = player2.y + 40;
+  } 
+  else if (lugar === 12) {
+    this.x = player2.x + 80;
+    this.y = player2.y - 80;
+  } 
+  else if (lugar === 13) {
+    this.x = player2.x + 80;
+    this.y = player2.y - 40;
+  } 
+  else if (lugar === 14) {
+    this.x = player2.x - 80;
+    this.y = player2.y;
+  } 
+  else if (lugar === 15) {
+    this.x = player2.x - 80;
+    this.y = player2.y + 80;
+  } 
+  else if (lugar === 16) {
+    this.x = player2.x - 80;
+    this.y = player2.y + 40;
+  } 
+  else if (lugar === 17) {
+    this.x = player2.x - 80;
+    this.y = player2.y - 80;
+  } 
+  else if (lugar === 18) {
+    this.x = player2.x - 80;
+    this.y = player2.y - 40;
+  } 
+  else if (lugar === 19) {
+    this.x = player2.x;
+    this.y = player2.y + 80;
+  } 
+  else if (lugar === 20) {
+    this.x = player2.x + 40;
+    this.y = player2.y + 80;
+  } 
+  else if (lugar === 21) {
+    this.x = player2.x - 40; 
+    this.y = player2.y + 80;
+  } 
+  else if (lugar === 22) {
+    this.x = player2.x; 
+    this.y = player2.y - 80;
+  } 
+  else if (lugar === 23) {
+    this.x = player2.x + 40; 
+    this.y = player2.y - 80;
+  } 
+  else if (lugar === 24) {
+    this.x = player2.x - 40; 
+    this.y = player2.y - 80;
+  }
+
+  this.movementX = 0;
+  this.movementY = 0;
+
+  this.update = function () {
+    ctx = myGameArea.context;
+    ctx.fillStyle = "white";
+    ctx.fillRect(this.x, this.y, this.width, this.height);
+  };
+  
+  this.newPos = function () {
+    if (this.x === 1030 && lugar === 1) {
+      if (this.movementX === 5) {
+        this.x;
+      } else {
+        this.x += this.movementX;
+      } 
+    } else if(this.x === 120 && lugar === 1) {
+     if (this.movementX === -5) {
+       this.x;
+     } else {
+       this.x += this.movementX
+     }
+    } 
+    
+    else if (this.x === 1030 && lugar === 2) {
+      if (this.movementX === 5) {
+        this.x;
+    } else {
+      this.x += this.movementX;
+    } 
+  } else if(this.x === 120 && lugar === 2) {
+    if (this.movementX === -5) {
+      this.x;
+    } else {
+      this.x += this.movementX
+    }
+  } 
+  
+  else if (this.x === 1030 && lugar === 3) {
+    if (this.movementX === 5) {
+      this.x;
+  } else {
+    this.x += this.movementX;
+  } 
+} else if(this.x === 120 && lugar === 3) {
+  if (this.movementX === -5) {
+    this.x;
+  } else {
+    this.x += this.movementX
+  }
+} 
+
+  else if (this.x === 950 && lugar === 4) {
+      if (this.movementX === 5) {
+        this.x;
+    } else {
+      this.x += this.movementX;
+    } 
+  } else if(this.x === 40 && lugar === 4) {
+    if (this.movementX === -5) {
+      this.x;
+    } else {
+      this.x += this.movementX
+    }
+  } 
+
+  else if (this.x === 950 && lugar === 5) {
+    if (this.movementX === 5) {
+      this.x;
+  } else {
+    this.x += this.movementX;
+  } 
+} else if(this.x === 40 && lugar === 5) {
+  if (this.movementX === -5) {
+    this.x;
+  } else {
+    this.x += this.movementX
+  }
+} 
+
+else if (this.x === 950 && lugar === 6) {
+  if (this.movementX === 5) {
+    this.x;
+} else {
+  this.x += this.movementX;
+} 
+} else if(this.x === 40 && lugar === 6) {
+if (this.movementX === -5) {
+  this.x;
+} else {
+  this.x += this.movementX
+}
+} 
+
+else if (this.x === 990 && lugar === 7) {
+  if (this.movementX === 5) {
+    this.x;
+} else {
+  this.x += this.movementX;
+} 
+} else if(this.x === 80 && lugar === 7) {
+if (this.movementX === -5) {
+  this.x;
+} else {
+  this.x += this.movementX
+}
+} 
+
+else if (this.x === 990 && lugar === 8) {
+  if (this.movementX === 5) {
+    this.x;
+} else {
+  this.x += this.movementX;
+} 
+} else if(this.x === 80 && lugar === 8) {
+if (this.movementX === -5) {
+  this.x;
+} else {
+  this.x += this.movementX
+}
+} 
+
+else if (this.x === 1070 && lugar === 9) {
+  if (this.movementX === 5) {
+    this.x;
+} else {
+  this.x += this.movementX;
+} 
+} else if(this.x === 160 && lugar === 9) {
+if (this.movementX === -5) {
+  this.x;
+} else {
+  this.x += this.movementX
+}
+} 
+
+else if (this.x === 1070 && lugar === 10) {
+  if (this.movementX === 5) {
+    this.x;
+} else {
+  this.x += this.movementX;
+} 
+} else if(this.x === 160 && lugar === 10) {
+if (this.movementX === -5) {
+  this.x;
+} else {
+  this.x += this.movementX
+}
+} 
+
+else if (this.x === 1070 && lugar === 11) {
+  if (this.movementX === 5) {
+    this.x;
+} else {
+  this.x += this.movementX;
+} 
+} else if(this.x === 160 && lugar === 11) {
+if (this.movementX === -5) {
+  this.x;
+} else {
+  this.x += this.movementX
+}
+} 
+
+else if (this.x === 1070 && lugar === 12) {
+  if (this.movementX === 5) {
+    this.x;
+} else {
+  this.x += this.movementX;
+} 
+} else if(this.x === 160 && lugar === 12) {
+if (this.movementX === -5) {
+  this.x;
+} else {
+  this.x += this.movementX
+}
+} 
+
+else if (this.x === 1070 && lugar === 13) {
+  if (this.movementX === 5) {
+    this.x;
+} else {
+  this.x += this.movementX;
+} 
+} else if(this.x === 160 && lugar === 13) {
+if (this.movementX === -5) {
+  this.x;
+} else {
+  this.x += this.movementX
+}
+} 
+
+else if (this.x === 910 && lugar === 14) {
+  if (this.movementX === 5) {
+    this.x;
+} else {
+  this.x += this.movementX;
+} 
+} else if(this.x === 0 && lugar === 14) {
+if (this.movementX === -5) {
+  this.x;
+} else {
+  this.x += this.movementX
+}
+} 
+
+else if (this.x === 910 && lugar === 15) {
+  if (this.movementX === 5) {
+    this.x;
+} else {
+  this.x += this.movementX;
+} 
+} else if(this.x === 0 && lugar === 15) {
+if (this.movementX === -5) {
+  this.x;
+} else {
+  this.x += this.movementX
+}
+} 
+
+else if (this.x === 910 && lugar === 16) {
+  if (this.movementX === 5) {
+    this.x;
+} else {
+  this.x += this.movementX;
+} 
+} else if(this.x === 0 && lugar === 16) {
+if (this.movementX === -5) {
+  this.x;
+} else {
+  this.x += this.movementX
+}
+} 
+
+else if (this.x === 910 && lugar === 17) {
+  if (this.movementX === 5) {
+    this.x;
+} else {
+  this.x += this.movementX;
+} 
+} else if(this.x === 0 && lugar === 17) {
+if (this.movementX === -5) {
+  this.x;
+} else {
+  this.x += this.movementX
+}
+} 
+
+else if (this.x === 910 && lugar === 18) {
+  if (this.movementX === 5) {
+    this.x;
+} else {
+  this.x += this.movementX;
+} 
+} else if(this.x === 0 && lugar === 18) {
+if (this.movementX === -5) {
+  this.x;
+} else {
+  this.x += this.movementX
+}
+} 
+
+else if (this.x === 990 && lugar === 19) {
+  if (this.movementX === 5) {
+    this.x;
+} else {
+  this.x += this.movementX;
+} 
+} else if(this.x === 80 && lugar === 19) {
+if (this.movementX === -5) {
+  this.x;
+} else {
+  this.x += this.movementX
+}
+} 
+
+else if (this.x === 1030 && lugar === 20) {
+  if (this.movementX === 5) {
+    this.x;
+} else {
+  this.x += this.movementX;
+} 
+} else if(this.x === 120 && lugar === 20) {
+if (this.movementX === -5) {
+  this.x;
+} else {
+  this.x += this.movementX
+}
+} 
+
+else if (this.x === 950 && lugar === 21) {
+  if (this.movementX === 5) {
+    this.x;
+} else {
+  this.x += this.movementX;
+} 
+} else if(this.x === 40 && lugar === 21) {
+if (this.movementX === -5) {
+  this.x;
+} else {
+  this.x += this.movementX
+}
+} 
+
+else if (this.x === 990 && lugar === 22) {
+  if (this.movementX === 5) {
+    this.x;
+} else {
+  this.x += this.movementX;
+} 
+} else if(this.x === 80 && lugar === 22) {
+if (this.movementX === -5) {
+  this.x;
+} else {
+  this.x += this.movementX
+}
+} 
+
+else if (this.x === 1030 && lugar === 23) {
+  if (this.movementX === 5) {
+    this.x;
+} else {
+  this.x += this.movementX;
+} 
+} else if(this.x === 120 && lugar === 23) {
+if (this.movementX === -5) {
+  this.x;
+} else {
+  this.x += this.movementX
+}
+} 
+
+else if (this.x === 950 && lugar === 24) {
+  if (this.movementX === 5) {
+    this.x;
+} else {
+  this.x += this.movementX;
+} 
+} else if(this.x === 40 && lugar === 24) {
+if (this.movementX === -5) {
+  this.x;
+} else {
+  this.x += this.movementX
+}
+} 
+
+  else {
+      this.x += this.movementX;
+    }
+
+    if (this.y === 630 && lugar === 1) {
+      if (this.movementY === 5) {
+        this.y;
+      } else {
+        this.y += this.movementY;
+      } 
+    } else if(this.y === 80 && lugar === 1) {
+     if (this.movementY === -5) {
+       this.y;
+     } else {
+       this.y += this.movementY
+     }
+    } 
+    
+    else if (this.y === 670 && lugar === 2) {
+      if (this.movementY === 5) {
+        this.y;
+      } else {
+        this.y += this.movementY;
+    }
+  } else if(this.y === 120 && lugar === 2) {
+    if (this.movementY === -5) {
+      this.y;
+    } else {
+      this.y += this.movementY
+    }
+  }
+
+  else if (this.y === 590 && lugar === 3) {
+    if (this.movementY === 5) {
+      this.y;
+    } else {
+      this.y += this.movementY;
+  }
+} else if(this.y === 40 && lugar === 3) {
+  if (this.movementY === -5) {
+    this.y;
+  } else {
+    this.y += this.movementY
+  }
+}
+
+else if (this.y === 630 && lugar === 4) {
+  if (this.movementY === 5) {
+    this.y;
+  } else {
+    this.y += this.movementY;
+}
+} else if(this.y === 80 && lugar === 4) {
+if (this.movementY === -5) {
+  this.y;
+} else {
+  this.y += this.movementY
+}
+}
+
+else if (this.y === 670 && lugar === 5) {
+  if (this.movementY === 5) {
+    this.y;
+  } else {
+    this.y += this.movementY;
+}
+} else if(this.y === 120 && lugar === 5) {
+if (this.movementY === -5) {
+  this.y;
+} else {
+  this.y += this.movementY
+}
+}
+
+else if (this.y === 590 && lugar === 6) {
+  if (this.movementY === 5) {
+    this.y;
+  } else {
+    this.y += this.movementY;
+}
+} else if(this.y === 40 && lugar === 6) {
+if (this.movementY === -5) {
+  this.y;
+} else {
+  this.y += this.movementY
+}
+}
+
+else if (this.y === 670 && lugar === 7) {
+  if (this.movementY === 5) {
+    this.y;
+  } else {
+    this.y += this.movementY;
+}
+} else if(this.y === 120 && lugar === 7) {
+if (this.movementY === -5) {
+  this.y;
+} else {
+  this.y += this.movementY
+}
+}
+
+else if (this.y === 590 && lugar === 8) {
+  if (this.movementY === 5) {
+    this.y;
+  } else {
+    this.y += this.movementY;
+}
+} else if(this.y === 40 && lugar === 8) {
+if (this.movementY === -5) {
+  this.y;
+} else {
+  this.y += this.movementY
+}
+}
+
+else if (this.y === 630 && lugar === 9) {
+  if (this.movementY === 5) {
+    this.y;
+  } else {
+    this.y += this.movementY;
+}
+} else if(this.y === 80 && lugar === 9) {
+if (this.movementY === -5) {
+  this.y;
+} else {
+  this.y += this.movementY
+}
+}
+
+else if (this.y === 710 && lugar === 10) {
+  if (this.movementY === 5) {
+    this.y;
+  } else {
+    this.y += this.movementY;
+}
+} else if(this.y === 160 && lugar === 10) {
+if (this.movementY === -5) {
+  this.y;
+} else {
+  this.y += this.movementY
+}
+}
+
+else if (this.y === 670 && lugar === 11) {
+  if (this.movementY === 5) {
+    this.y;
+  } else {
+    this.y += this.movementY;
+}
+} else if(this.y === 120 && lugar === 11) {
+if (this.movementY === -5) {
+  this.y;
+} else {
+  this.y += this.movementY
+}
+}
+
+else if (this.y === 550 && lugar === 12) {
+  if (this.movementY === 5) {
+    this.y;
+  } else {
+    this.y += this.movementY;
+}
+} else if(this.y === 0 && lugar === 12) {
+if (this.movementY === -5) {
+  this.y;
+} else {
+  this.y += this.movementY
+}
+}
+
+else if (this.y === 590 && lugar === 13) {
+  if (this.movementY === 5) {
+    this.y;
+  } else {
+    this.y += this.movementY;
+}
+} else if(this.y === 40 && lugar === 13) {
+if (this.movementY === -5) {
+  this.y;
+} else {
+  this.y += this.movementY
+}
+}
+
+else if (this.y === 630 && lugar === 14) {
+  if (this.movementY === 5) {
+    this.y;
+  } else {
+    this.y += this.movementY;
+}
+} else if(this.y === 80 && lugar === 14) {
+if (this.movementY === -5) {
+  this.y;
+} else {
+  this.y += this.movementY
+}
+}
+
+else if (this.y === 710 && lugar === 15) {
+  if (this.movementY === 5) {
+    this.y;
+  } else {
+    this.y += this.movementY;
+}
+} else if(this.y === 160 && lugar === 15) {
+if (this.movementY === -5) {
+  this.y;
+} else {
+  this.y += this.movementY
+}
+}
+
+else if (this.y === 670 && lugar === 16) {
+  if (this.movementY === 5) {
+    this.y;
+  } else {
+    this.y += this.movementY;
+}
+} else if(this.y === 120 && lugar === 16) {
+if (this.movementY === -5) {
+  this.y;
+} else {
+  this.y += this.movementY
+}
+}
+
+else if (this.y === 550 && lugar === 17) {
+  if (this.movementY === 5) {
+    this.y;
+  } else {
+    this.y += this.movementY;
+}
+} else if(this.y === 0 && lugar === 17) {
+if (this.movementY === -5) {
+  this.y;
+} else {
+  this.y += this.movementY
+}
+}
+
+else if (this.y === 590 && lugar === 18) {
+  if (this.movementY === 5) {
+    this.y;
+  } else {
+    this.y += this.movementY;
+}
+} else if(this.y === 40 && lugar === 18) {
+if (this.movementY === -5) {
+  this.y;
+} else {
+  this.y += this.movementY
+}
+}
+
+else if (this.y === 710 && lugar === 19) {
+  if (this.movementY === 5) {
+    this.y;
+  } else {
+    this.y += this.movementY;
+}
+} else if(this.y === 160 && lugar === 19) {
+if (this.movementY === -5) {
+  this.y;
+} else {
+  this.y += this.movementY
+}
+}
+
+else if (this.y === 710 && lugar === 20) {
+  if (this.movementY === 5) {
+    this.y;
+  } else {
+    this.y += this.movementY;
+}
+} else if(this.y === 160 && lugar === 20) {
+if (this.movementY === -5) {
+  this.y;
+} else {
+  this.y += this.movementY
+}
+}
+
+else if (this.y === 710 && lugar === 21) {
+  if (this.movementY === 5) {
+    this.y;
+  } else {
+    this.y += this.movementY;
+}
+} else if(this.y === 160 && lugar === 21) {
+if (this.movementY === -5) {
+  this.y;
+} else {
+  this.y += this.movementY
+}
+}
+
+else if (this.y === 550 && lugar === 22) {
+  if (this.movementY === 5) {
+    this.y;
+  } else {
+    this.y += this.movementY;
+}
+} else if(this.y === 0 && lugar === 22) {
+if (this.movementY === -5) {
+  this.y;
+} else {
+  this.y += this.movementY
+}
+}
+
+else if (this.y === 550 && lugar === 23) {
+  if (this.movementY === 5) {
+    this.y;
+  } else {
+    this.y += this.movementY;
+}
+} else if(this.y === 0 && lugar === 23) {
+if (this.movementY === -5) {
+  this.y;
+} else {
+  this.y += this.movementY
+}
+}
+
+else if (this.y === 550 && lugar === 24) {
+  if (this.movementY === 5) {
+    this.y;
+  } else {
+    this.y += this.movementY;
+}
+} else if(this.y === 0 && lugar === 24) {
+if (this.movementY === -5) {
+  this.y;
+} else {
+  this.y += this.movementY
+}
+}
+
+    else {
+      this.y += this.movementY;
+    }
 
   };
   this.left = function () {
@@ -1059,6 +1903,30 @@ function moveUp() {
 
 function moveUp2() {
   player2.movementY = -5;
+  sold101.movementY = -5;
+  sold102.movementY = -5;
+  sold103.movementY = -5;
+  sold104.movementY = -5;
+  sold105.movementY = -5;
+  sold106.movementY = -5;
+  sold107.movementY = -5;
+  sold108.movementY = -5;
+  sold109.movementY = -5;
+  sold110.movementY = -5;
+  sold111.movementY = -5;
+  sold112.movementY = -5;
+  sold113.movementY = -5;
+  sold114.movementY = -5;
+  sold115.movementY = -5;
+  sold116.movementY = -5;
+  sold117.movementY = -5;
+  sold118.movementY = -5;
+  sold119.movementY = -5;
+  sold120.movementY = -5;
+  sold121.movementY = -5;
+  sold122.movementY = -5;
+  sold123.movementY = -5;
+  sold124.movementY = -5;
 }
 
 function moveDown() {
@@ -1091,6 +1959,30 @@ function moveDown() {
 
 function moveDown2() {
   player2.movementY = 5;
+  sold101.movementY = 5;
+  sold102.movementY = 5;
+  sold103.movementY = 5;
+  sold104.movementY = 5;
+  sold105.movementY = 5;
+  sold106.movementY = 5;
+  sold107.movementY = 5;
+  sold108.movementY = 5;
+  sold109.movementY = 5;
+  sold110.movementY = 5;
+  sold111.movementY = 5;
+  sold112.movementY = 5;
+  sold113.movementY = 5;
+  sold114.movementY = 5;
+  sold115.movementY = 5;
+  sold116.movementY = 5;
+  sold117.movementY = 5;
+  sold118.movementY = 5;
+  sold119.movementY = 5;
+  sold120.movementY = 5;
+  sold121.movementY = 5;
+  sold122.movementY = 5;
+  sold123.movementY = 5;
+  sold124.movementY = 5;
 }
 
 function moveRight() {
@@ -1123,6 +2015,30 @@ function moveRight() {
 
 function moveRight2() {
   player2.movementX = 5;
+  sold101.movementX = 5;
+  sold102.movementX = 5;
+  sold103.movementX = 5;
+  sold104.movementX = 5;
+  sold105.movementX = 5;
+  sold106.movementX = 5;
+  sold107.movementX = 5;
+  sold108.movementX = 5;
+  sold109.movementX = 5;
+  sold110.movementX = 5;
+  sold111.movementX = 5;
+  sold112.movementX = 5;
+  sold113.movementX = 5;
+  sold114.movementX = 5;
+  sold115.movementX = 5;
+  sold116.movementX = 5;
+  sold117.movementX = 5;
+  sold118.movementX = 5;
+  sold119.movementX = 5;
+  sold120.movementX = 5;
+  sold121.movementX = 5;
+  sold122.movementX = 5;
+  sold123.movementX = 5;
+  sold124.movementX = 5;
 }
 
 function moveLeft() {
@@ -1155,6 +2071,30 @@ function moveLeft() {
 
 function moveLeft2() {
   player2.movementX = -5;
+  sold101.movementX = -5;
+  sold102.movementX = -5;
+  sold103.movementX = -5;
+  sold104.movementX = -5;
+  sold105.movementX = -5;
+  sold106.movementX = -5;
+  sold107.movementX = -5;
+  sold108.movementX = -5;
+  sold109.movementX = -5;
+  sold110.movementX = -5;
+  sold111.movementX = -5;
+  sold112.movementX = -5;
+  sold113.movementX = -5;
+  sold114.movementX = -5;
+  sold115.movementX = -5;
+  sold116.movementX = -5;
+  sold117.movementX = -5;
+  sold118.movementX = -5;
+  sold119.movementX = -5;
+  sold120.movementX = -5;
+  sold121.movementX = -5;
+  sold122.movementX = -5;
+  sold123.movementX = -5;
+  sold124.movementX = -5;
 }
 
 var map = {};
@@ -1300,6 +2240,56 @@ function stopMove () {
 function stopMove2 () {
   player2.movementX = 0;
   player2.movementY = 0;
+
+  sold101.movementX = 0;
+  sold102.movementX = 0;
+  sold103.movementX = 0;
+  sold104.movementX = 0;
+  sold105.movementX = 0;
+  sold106.movementX = 0;
+  sold107.movementX = 0;
+  sold108.movementX = 0;
+  sold109.movementX = 0;
+  sold110.movementX = 0;
+  sold111.movementX = 0;
+  sold112.movementX = 0;
+  sold113.movementX = 0;
+  sold114.movementX = 0;
+  sold115.movementX = 0;
+  sold116.movementX = 0;
+  sold117.movementX = 0;
+  sold118.movementX = 0;
+  sold119.movementX = 0;
+  sold120.movementX = 0;
+  sold121.movementX = 0;
+  sold122.movementX = 0;
+  sold123.movementX = 0;
+  sold124.movementX = 0;
+
+  sold101.movementY = 0;
+  sold102.movementY = 0;
+  sold103.movementY = 0;
+  sold104.movementY = 0;
+  sold105.movementY = 0;
+  sold106.movementY = 0;
+  sold107.movementY = 0;
+  sold108.movementY = 0;
+  sold109.movementY = 0;
+  sold110.movementY = 0;
+  sold111.movementY = 0;
+  sold112.movementY = 0;
+  sold113.movementY = 0;
+  sold114.movementY = 0;
+  sold115.movementY = 0;
+  sold116.movementY = 0;
+  sold117.movementY = 0;
+  sold118.movementY = 0;
+  sold119.movementY = 0;
+  sold120.movementY = 0;
+  sold121.movementY = 0;
+  sold122.movementY = 0;
+  sold123.movementY = 0;
+  sold124.movementY = 0;
 }
 
 startGame();
