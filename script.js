@@ -14,7 +14,6 @@ function startGame () {
       army2.push(new Soldier2 (i));
     }
   }
-  
 }
 
 function updateGame() {
