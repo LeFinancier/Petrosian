@@ -1,53 +1,209 @@
 var army1 = [];
 var army2 = [];
+var flechas2 = [];
+var flechas1 = [];
+
 
 function startGame () {
   window.onload = function () {
     myGameArea.start();
-    player =  new Character(30, 30, "red", 100, 100);
-    for (var i = 1; i < 25; i++) {
-      army1.push(new Soldier1 (i));
-    }
-
-    player2 = new Character(30, 30, "green", 500, 200);
-    for (var i = 1; i < 25; i++) {
-      army2.push(new Soldier2 (i));
-    }
+    plyr();
+    plyr2();
   }
 }
+
+function plyr() {
+  player =  new Character(30, 30, "red", 100, 100);
+  var b = 1000;
+    for (var i = 1; i < 25; i++){
+    army1.push(new Soldier1 (i,b));
+    }
+    for (var f = 0; f < army1.length; f++) {
+      if (army1[f].class === 'arquero') {
+        flechas1.push(new Flecha(army1[f].x,army1[f].y,f))
+      }
+    }
+}
+
+function plyr2 () {
+    player2 = new Character(30, 30, "green", 500, 500);
+    var b = 3000;
+    for (var i = 1; i < 25; i++){
+    army2.push(new Soldier2 (i,b));
+    }
+    for (var f = 0; f < army2.length; f++) {
+      if (army2[f].class === 'arquero') {
+        flechas2.push(new Flecha(army2[f].x,army2[f].y,f))
+      }
+    }
+  }
 
 function updateGame() {
   for (var k = 0; k < army1.length; k++){
     for (var i = 0; i < army2.length; i++) {
-      if (army1[k].colition(army2[i])) {
-        army2.splice(i,1);
+      if (army1[k].colition(army2[i]) || army2[i].colition(army1[k])) {
+        
+        army1[k].life = army1[k].life - army2[i].attack;
+        army2[i].life = army2[i].life - army1[k].attack;
+
+        if (((army1[k].x + 30) >= (army2[i].x) && (army1[k].x + 30) <= (army2[i].x + 3)) && player.movementX === -5 ||
+        ((army1[k].x + 30) >= (army2[i].x) && (army1[k].x + 30) <= (army2[i].x + 3)) && player2.movementX === 5 ||
+        ((army1[k].x + 30) >= (army2[i].x) && (army1[k].x + 30) <= (army2[i].x + 3)) && player.movementY === -5 ||
+        ((army1[k].x + 30) >= (army2[i].x) && (army1[k].x + 30) <= (army2[i].x + 3)) && player2.movementY === 5 || 
+        ((army1[k].x + 30) >= (army2[i].x) && (army1[k].x + 30) <= (army2[i].x + 3)) && player.movementY === 5 ||
+        ((army1[k].x + 30) >= (army2[i].x) && (army1[k].x + 30) <= (army2[i].x + 3)) && player2.movementY === -5) {
+          player.x = player.x;
+          player.y = player.y;
+          for (var l = 0; l < army1.length; l++) {
+            army1[l].x = army1[l].x;
+            army1[l].y = army1[l].y;
+          } 
+          player2.x = player2.x;
+          player2.y = player2.y;
+          for (var m = 0; m < army2.length; m++) {
+            army2[m].x = army2[m].x;
+            army2[m].y = army2[m].y;
+          }
+        } 
+        
+        else if (((army1[k].x) <= (army2[i].x + 30) && (army1[k].x + 3) >= (army2[i].x + 30)) && player.movementX === 5 ||
+        ((army1[k].x) <= (army2[i].x + 30) && (army1[k].x + 3) >= (army2[i].x + 30)) && player2.movementX === -5 ||
+        ((army1[k].x) <= (army2[i].x + 30) && (army1[k].x + 3) >= (army2[i].x + 30)) && player.movementY === -5 ||
+        ((army1[k].x) <= (army2[i].x + 30) && (army1[k].x + 3) >= (army2[i].x + 30)) && player2.movementY === 5 ||
+        ((army1[k].x) <= (army2[i].x + 30) && (army1[k].x + 3) >= (army2[i].x + 30)) && player.movementY === 5 || 
+        ((army1[k].x) <= (army2[i].x + 30) && (army1[k].x + 3) >= (army2[i].x + 30)) && player2.movementY === -5) {
+          player.x = player.x;
+          player.y = player.y;
+          for (var l = 0; l < army1.length; l++) {
+            army1[l].x = army1[l].x;
+            army1[l].y = army1[l].y;
+          } 
+          player2.x = player2.x;
+          player2.y = player2.y;
+          for (var m = 0; m < army2.length; m++) {
+            army2[m].x = army2[m].x;
+            army2[m].y = army2[m].y;
+          } 
+        } 
+        
+        else if (((army1[k].y) <= (army2[i].y + 30) && (army1[k].y + 3) >= (army2[i].y + 30)) && player.movementY === 5 ||
+        ((army1[k].y) <= (army2[i].y + 30) && (army1[k].y + 3) >= (army2[i].y + 30)) && player2.movementY === -5 ||
+        ((army1[k].y) <= (army2[i].y + 30) && (army1[k].y + 3) >= (army2[i].y + 30)) && player.movementX === -5 ||
+        ((army1[k].y) <= (army2[i].y + 30) && (army1[k].y + 3) >= (army2[i].y + 30)) && player2.movementX === 5 ||
+        ((army1[k].y) <= (army2[i].y + 30) && (army1[k].y + 3) >= (army2[i].y + 30)) && player.movementX === 5 ||
+        ((army1[k].y) <= (army2[i].y + 30) && (army1[k].y + 3) >= (army2[i].y + 30)) && player2.movementX === -5) {
+          player.y = player.y;
+          player.x = player.x;
+          for (var l = 0; l < army1.length; l++) {
+            army1[l].y = army1[l].y;
+            army1[l].x = army1[l].x;
+          } 
+        } 
+        
+        else if (((army1[k].y + 30) >= (army2[i].y) && (army1[k].y + 30) <= (army2[i].y + 3)) && player.movementY === -5 ||
+        ((army1[k].y + 30) >= (army2[i].y) && (army1[k].y + 30) <= (army2[i].y + 3)) && player2.movementY === 5 ||
+        ((army1[k].y + 30) >= (army2[i].y) && (army1[k].y + 30) <= (army2[i].y + 3)) && player.movementX === -5 ||
+        ((army1[k].y + 30) >= (army2[i].y) && (army1[k].y + 30) <= (army2[i].y + 3)) && player2.movementX === 5 ||
+        ((army1[k].y + 30) >= (army2[i].y) && (army1[k].y + 30) <= (army2[i].y + 3)) && player.movementX === 5 ||
+        ((army1[k].y + 30) >= (army2[i].y) && (army1[k].y + 30) <= (army2[i].y + 3)) && player2.movementX === -5) {
+          player.y = player.y;
+          player.x = player.x;
+          for (var l = 0; l < army1.length; l++) {
+            army1[l].y = army1[l].y;
+            army1[l].x = army1[l].x;
+          } 
+          player2.y = player2.y;
+          player2.x = player2.x;
+          for (var m = 0; m < army2.length; m++) {
+            army2[m].y = army2[m].y;
+            army2[m].x = army2[m].x;
+          } 
+        }
+
+        else {
+         stopMove();
+         stopMove2();
+      }
+
+        if (army2[i].life < 0) {
+          army2.splice(i,1);
+      } else if (army1[k].life < 0) {
+          army1.splice(k,1);
+      }
       } else if (army1[k].colition(player2)) {
-        console.log('Muere');
+        console.log('Muere verde');
+        myGameArea.stop();
+      } else if (army2[i].colition(player)) {
+        console.log('Muere rojo');
         myGameArea.stop();
       }
     }
-    if (army1[k].colition(player2)) {
-      console.log('Muere');
-      myGameArea.stop();
+  }
+
+  for (var k = 0; k < flechas2.length; k++){
+    for (var i = 0; i < army1.length; i++) {
+      if (flechas2[k].colition(army1[i])) {
+        army1[i].life = army1[i].life - flechas2[k].attack;
+        if (army1[i].life < 0) {
+          army1.splice(i,1);
+        } 
+      } 
     }
   }
 
+  for (var k = 0; k < flechas2.length; k++){
+      if (flechas2[k].colition(player)) {
+        console.log('Muere rojo');
+        myGameArea.stop();
+      }
+    }
+  
 
+    for (var k = 0; k < flechas1.length; k++){
+      for (var i = 0; i < army2.length; i++) {
+        if (flechas1[k].colition(army2[i])) {
+          army2[i].life = army2[i].life - flechas1[k].attack;
+          if (army2[i].life < 0) {
+            army2.splice(i,1);
+          } 
+        } 
+      }
+    }
+  
+    for (var k = 0; k < flechas1.length; k++){
+        if (flechas1[k].colition(player2)) {
+          console.log('Muere verde');
+          myGameArea.stop();
+        }
+      }  
+  
   myGameArea.clear();
   myGameArea.back();
   myGameArea.frames +=1;
+
   player.newPos();
+  player.update();
   for (var i = 0; i < army1.length; i++) {
     army1[i].newPos();
     army1[i].update();
   }
+  for (var o = 0; o < flechas1.length; o++) {
+    flechas1[o].newPos();
+    flechas1[o].update();
+  }
+
+  player2.newPos();
+  player2.update();
   for (var i = 0; i < army2.length; i++) {
     army2[i].newPos();
     army2[i].update();
   }
-  player2.newPos();
-  player.update();
-  player2.update();
+  for (var o = 0; o < flechas2.length; o++) {
+    flechas2[o].newPos();
+    flechas2[o].update();
+  }
+  
+  
 }
 
 var myGameArea = {
@@ -132,7 +288,7 @@ function Character (width, height, color, x, y) {
   };
 };
 
-function Soldier1 (lugar) {
+function Soldier1 (lugar, clase) {
   this.width = player.width;
   this.height = player.height;
   if (lugar === 1) {
@@ -235,9 +391,29 @@ function Soldier1 (lugar) {
   this.movementX = 0;
   this.movementY = 0;
 
+if (clase === 1000) {
+  this.life = 50;
+  this.attack = 1;
+  this.class = 'arquero'
+} else if (clase === 2000) {
+  this.life = 500000;
+  this.attack = 10;
+  this.class = 'escudero';
+} else if (clase === 3000) {
+  this.life = 1000;
+  this.class = 'caballero';
+  this.attack = 100000;
+}
+
   this.update = function () {
     ctx = myGameArea.context;
-    ctx.fillStyle = "white";
+    if(clase === 1000) {
+      ctx.fillStyle = "lightblue";
+    } else if (clase === 2000) {
+      ctx.fillStyle = "lightyellow";
+    } else {
+      ctx.fillStyle = "white";
+    }
     ctx.fillRect(this.x, this.y, this.width, this.height);
   };
   
@@ -923,17 +1099,19 @@ if (this.movementY === -5) {
     }
 
   };
+
+  
   this.left = function () {
-    return this.x;
+      return this.x;
   };
   this.right = function () {
-    return this.x + this.width;
+      return this.x + this.width;
   };
   this.top = function () {
     return this.y;
   };
   this.bottom = function () {
-    return this.y + this.height;
+      return this.y + this.height;
   };
   this.colition = function(soldier) {
     return !(this.bottom() < soldier.top() || 
@@ -943,7 +1121,88 @@ if (this.movementY === -5) {
 }
 };
 
-function Soldier2 (lugar) {
+function Flecha (x, y, dir) {
+  this.x = x;
+  this.y = y;
+  this.width = 5;
+  this.height = 5;
+  this.maxRange = 80;
+  this.attack = 2000;
+  this.dir = dir;
+  this.newPos = function () {
+    if (this.maxRange > 0 && this.x > player.right() /*|| this.maxRange > 0 && dir === 1 ||
+      this.maxRange > 0 && dir === 2 || this.maxRange > 0 && dir === 8 ||
+      this.maxRange > 0 && dir === 9 || this.maxRange > 0 && dir === 10 ||
+      this.maxRange > 0 && dir === 11 || this.maxRange > 0 && dir === 12*/) {
+      this.x += 7;
+      this.maxRange -= 7;
+    } 
+    else if (this.maxRange > 0 && this.x < player.left() /*|| this.maxRange > 0 && dir === 4 ||
+      this.maxRange > 0 && dir === 5 || this.maxRange > 0 && dir === 13 ||
+      this.maxRange > 0 && dir === 14 || this.maxRange > 0 && dir === 15 ||
+      this.maxRange > 0 && dir === 16 || this.maxRange > 0 && dir === 17 ||
+      this.maxRange > 0 && dir === 24*/) {
+      this.x -= 7;
+      this.maxRange -= 7;
+    }
+    else if (this.maxRange > 0 && this.y > player.bottom() /*|| this.maxRange > 0 && dir === 18 ||
+      this.maxRange > 0 && dir === 19 || this.maxRange > 0 && dir === 20*/) {
+      this.y += 7;
+      this.maxRange -= 7;
+    }
+    else if (this.maxRange > 0 && this.y < player.top() /*|| this.maxRange > 0 && dir === 21 ||
+      this.maxRange > 0 && dir === 22 || this.maxRange > 0 && dir === 23*/) {
+      this.y -= 7;
+      this.maxRange -= 7;
+    }
+      else {
+      this.erase();
+    }
+  }
+  
+  this.erase = function () {
+    flechas2 = [];
+    flechas1 = [];
+    for (var z = 0; z < army2.length; z++) {
+      if (army2[z].class === 'arquero') {
+        flechas2.push(new Flecha(army2[z].x,army2[z].y,z));
+      }
+    }
+    for (var d = 0; d < army1.length; d++) {
+     if (army1[d].class === 'arquero') {
+        flechas1.push(new Flecha(army1[d].x,army1[d].y,d));
+      }
+    }
+  }
+
+  this.update = function () {
+    ctx = myGameArea.context;
+    ctx.fillStyle = "black";
+    ctx.fillRect(this.x, this.y, this.width, this.height);
+  }
+
+  this.left = function () {
+      return this.x;
+  };
+  this.right = function () {
+      return this.x + this.width;
+  };
+  this.top = function () {
+    return this.y;
+  };
+  this.bottom = function () {
+      return this.y + this.height;
+  };
+
+  this.colition = function(soldier) {
+    return !(this.bottom() < soldier.top() || 
+    (this.top() > soldier.bottom()) ||
+    (this.right()< soldier.left()) ||
+    (this.left() > soldier.right()))
+}
+}
+
+function Soldier2 (lugar, clase) {
   this.width = player2.width;
   this.height = player2.height;
   if (lugar === 1) {
@@ -1046,9 +1305,29 @@ function Soldier2 (lugar) {
   this.movementX = 0;
   this.movementY = 0;
 
+  if (clase === 1000) {
+    this.life = 100;
+    this.attack = 1;
+    this.class = 'arquero'
+  } else if (clase === 2000) {
+    this.life = 500000;
+    this.attack = 10;
+    this.class = 'escudero';
+  } else if (clase === 3000) {
+    this.life = 1000;
+    this.class = 'caballero';
+    this.attack = 100000;
+  }
+
   this.update = function () {
     ctx = myGameArea.context;
-    ctx.fillStyle = "white";
+    if(clase === 1000) {
+      ctx.fillStyle = "lightblue";
+    } else if (clase === 2000) {
+      ctx.fillStyle = "lightyellow";
+    } else {
+      ctx.fillStyle = "white";
+    }
     ctx.fillRect(this.x, this.y, this.width, this.height);
   };
   
@@ -1734,18 +2013,20 @@ if (this.movementY === -5) {
     }
 
   };
+
   this.left = function () {
-    return this.x;
+      return this.x;
   };
   this.right = function () {
-    return this.x + this.width;
+      return this.x + this.width;
   };
   this.top = function () {
     return this.y;
   };
   this.bottom = function () {
-    return this.y + this.height;
+      return this.y + this.height;
   };
+
   this.colition = function(soldier) {
     return !(this.bottom() < soldier.top() || 
     (this.top() > soldier.bottom()) ||
