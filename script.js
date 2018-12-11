@@ -5,15 +5,15 @@ var flechas1 = [];
 
 
 function startGame () {
-  window.onload = function () {
+  //window.onload = function () {
     myGameArea.start();
     plyr();
     plyr2();
-  }
+  //}
 }
 
 function plyr() {
-  player =  new Character(30, 30, "red", 100, 100);
+  player =  new Character(30, 30, "humano", 100, 100);
   var b = 1000;
     for (var i = 1; i < 25; i++){
     army1.push(new Soldier1 (i,b));
@@ -26,8 +26,8 @@ function plyr() {
 }
 
 function plyr2 () {
-    player2 = new Character(30, 30, "green", 500, 500);
-    var b = 3000;
+    player2 = new Character(30, 30, "orco", 500, 500);
+    var b = 2000;
     for (var i = 1; i < 25; i++){
     army2.push(new Soldier2 (i,b));
     }
@@ -208,38 +208,70 @@ function updateGame() {
 
 var myGameArea = {
   canvas: document.createElement('canvas'),
+  score: document.createElement('canvas'),
   start: function () {
+    this.score.witdh = 10;
+    this.score.height = 740;
     this.canvas.width = 1100;
     this.canvas.height = 740;
     this.context = this.canvas.getContext('2d');
+    this.scoreContext = this.score.getContext('2d');
     document.getElementById('board').insertBefore(this.canvas,document.getElementById('board').childNodes[0]);
+    document.getElementById('board').insertBefore(this.score,document.getElementById('board').childNodes[0]);
     this.interval = setInterval(updateGame, 18);
   },
+  puntosOrcos: 0,
+  puntosHumanos: 0,
   frames: 0,
   clear: function () {
     this.context.clearRect(0,0,this.canvas.width, this.canvas.height);
+    this.scoreContext.clearRect(1100,0,this.score.width, this.score.height);
   },
   back: function () {
-    this.context.fillStyle = "lightgreen";
-    this.context.fillRect(0,0,this.canvas.width, this.canvas.height);
+    this.img = new Image();
+    this.img.src = 'Images/campoBatalla.png';
+    this.context.drawImage(this.img,0,-600,this.canvas.width,this.canvas.height + 700);
+
+    this.scoreContext.fillStyle = "grey";
+    this.scoreContext.fillRect(0,0,this.score.width, this.score.height);
+    this.scoreContext.font =  "40px luminari";
+    this.scoreContext.fillStyle = "white";
+    this.scoreContext.fillText ("Puntuación", 50, 50);
+
+    this.scoreContext.font =  "30px luminari";
+    this.scoreContext.fillStyle = "white";
+    this.scoreContext.fillText ("Humanos", 90, 150);
+    this.scoreContext.fillText (this.puntosHumanos, 140, 230);
+
+    this.scoreContext.font =  "30px luminari";
+    this.scoreContext.fillStyle = "white";
+    this.scoreContext.fillText ("Orcos", 100, 400);
+    this.scoreContext.fillText (this.puntosOrcos, 140, 480);
   },
   stop: function () {
     clearInterval(this.interval);
   }
 };
 
-function Character (width, height, color, x, y) {
+function Character (width, height, raza, x, y) {
   this.width = width;
   this.height = height;
   this.x = x;
   this.y = y;
   this.movementX = 0;
   this.movementY = 0;
+  if(raza === 'humano') {
+    this.img = new Image();
+    this.img.src = 'Images/liderHumano.png';
+  } else if (raza === 'orco') {
+    this.img = new Image();
+    this.img.src = 'Images/liderOrco.png';
+  }
 
   this.update = function () {
     ctx = myGameArea.context;
-    ctx.fillStyle = color;
-    ctx.fillRect(this.x, this.y, this.width, this.height);
+    ctx.drawImage(this.img,this.x-50,this.y,this.width+40,this.height);
+    
   };
   
   this.newPos = function () {
@@ -2175,6 +2207,18 @@ onkeydown = onkeyup = function (e) {
     stopMove();
   } 
 }
+
+// $(function() {
+
+//   var $body = $(document);
+//   $body.bind('scroll', function() {
+//       // "Desactivar" el scroll horizontal
+//       if ($body.scrollDown() !== 0) {
+//           $body.scrollDown(0);
+//       }
+//   });
+
+// }); 
 
 function stopMove () {
   player.movementX = 0;

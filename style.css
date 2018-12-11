@@ -1,0 +1,14 @@
+.btn {
+  font-family: luminari;
+  background-color: rgb(76, 110, 78);
+}
+h1 {
+  margin: 40px;
+  font-size: 90px;
+  color: brown;
+  font-family: luminari;
+}
+body {
+background-image: url("Images/fondo.jpg");
+background-size: 1500px;
+}
