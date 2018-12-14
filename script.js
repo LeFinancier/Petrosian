@@ -5,15 +5,18 @@ var flechas1 = [];
 
 
 function startGame () {
-  //window.onload = function () {
+    army1 = [];
+    army2 = [];
+    flechas2 = [];
+    flechas1 = [];
+    myGameArea.stop();
     myGameArea.start();
     plyr();
     plyr2();
-  //}
 }
 
 function plyr() {
-  player =  new Character(30, 30, "humano", 100, 100);
+  player =  new Character(30, 30, "humano", 900, 300);
   var b = 1000;
     for (var i = 1; i < 25; i++){
     army1.push(new Soldier1 (i,b));
@@ -26,7 +29,7 @@ function plyr() {
 }
 
 function plyr2 () {
-    player2 = new Character(30, 30, "orco", 500, 500);
+    player2 = new Character(30, 30, "orco", 100, 300);
     var b = 2000;
     for (var i = 1; i < 25; i++){
     army2.push(new Soldier2 (i,b));
@@ -131,10 +134,12 @@ function updateGame() {
           army1.splice(k,1);
       }
       } else if (army1[k].colition(player2)) {
-        console.log('Muere verde');
+        console.log('Muere orco');
+        myGameArea.puntosHumanos += 1;
         myGameArea.stop();
       } else if (army2[i].colition(player)) {
-        console.log('Muere rojo');
+        console.log('Muere humano');
+        myGameArea.puntosOrcos += 1;
         myGameArea.stop();
       }
     }
@@ -153,7 +158,8 @@ function updateGame() {
 
   for (var k = 0; k < flechas2.length; k++){
       if (flechas2[k].colition(player)) {
-        console.log('Muere rojo');
+        console.log('Muere humano');
+        myGameArea.puntosOrcos += 1;
         myGameArea.stop();
       }
     }
@@ -172,7 +178,8 @@ function updateGame() {
   
     for (var k = 0; k < flechas1.length; k++){
         if (flechas1[k].colition(player2)) {
-          console.log('Muere verde');
+          console.log('Muere orco');
+          myGameArea.puntosHumanos += 1;
           myGameArea.stop();
         }
       }  
@@ -212,7 +219,7 @@ var myGameArea = {
   start: function () {
     this.score.witdh = 10;
     this.score.height = 740;
-    this.canvas.width = 1100;
+    this.canvas.width = window.innerWidth - 300;
     this.canvas.height = 740;
     this.context = this.canvas.getContext('2d');
     this.scoreContext = this.score.getContext('2d');
@@ -270,12 +277,22 @@ function Character (width, height, raza, x, y) {
 
   this.update = function () {
     ctx = myGameArea.context;
-    ctx.drawImage(this.img,this.x-50,this.y,this.width+40,this.height);
+    ctx.drawImage( 
+      this.img,
+      70, //posición de origen - x
+      180, // posición de origen - y
+      this.width+20, // ancho en el origen (a partir de la posición)
+      this.height+40, // alto en el origen (a partir de la posición)
+      this.x, //movimiento en x
+      this.y, //movimiento en y
+      this.width,
+      this.height
+      );
     
   };
   
   this.newPos = function () {
-    if (this.x === 990) {
+    if (this.x === Math.floor((myGameArea.canvas.width - 110) / 10) * 10) {
       if (this.movementX === 5) {
         this.x;
       } else {
@@ -323,6 +340,7 @@ function Character (width, height, raza, x, y) {
 function Soldier1 (lugar, clase) {
   this.width = player.width;
   this.height = player.height;
+  this.lugar = lugar;
   if (lugar === 1) {
     this.x = player.x + 40;
     this.y = player.y;
@@ -436,21 +454,119 @@ if (clase === 1000) {
   this.class = 'caballero';
   this.attack = 100000;
 }
+if (clase === 1000) {
+  if(lugar === 1 || lugar === 2 || lugar === 3 || lugar === 20 || lugar === 23 || lugar === 9 || lugar === 10 || lugar === 11 || lugar === 12 || lugar === 13) {
+    this.img = new Image();
+    this.img.src = 'Images/arqueraHumana.png';
+    this.px = 40;
+    this.py = 515;
+    this.w = this.width + 40;
+    this.h = this.height + 50;
+  } else if(lugar === 4 || lugar === 5 || lugar === 6 || lugar === 21 || lugar === 24 || lugar === 14 || lugar === 15 || lugar === 16 || lugar === 17 || lugar === 18) {
+    this.img = new Image();
+    this.img.src = 'Images/arqueraHumana.png';
+    this.px = 34;
+    this.py = 612;
+    this.w = this.width + 40;
+    this.h = this.height + 50;
+  } else if(lugar === 7 || lugar === 10 || lugar === 15 || lugar === 19) {
+    this.img = new Image();
+    this.img.src = 'Images/arqueraHumana.png';
+    this.px = 36;
+    this.py = 423;
+    this.w = this.width + 40;
+    this.h = this.height + 50;
+  } else if(lugar === 8 || lugar === 12 || lugar === 17 || lugar === 22) {
+    this.img = new Image();
+    this.img.src = 'Images/arqueraHumana.png';
+    this.px = 33;
+    this.py = 697;
+    this.w = this.width + 40;
+    this.h = this.height + 50;
+  }
+}
+
+else if (clase === 2000) {
+  if(lugar === 1 || lugar === 2 || lugar === 3 || lugar === 20 || lugar === 23 || lugar === 9 || lugar === 10 || lugar === 11 || lugar === 12 || lugar === 13) {
+    this.img = new Image();
+    this.img.src = 'Images/escuderoHumano.png';
+    this.px = 77;
+    this.py = 5;
+    this.w = this.width + 20;
+    this.h = this.height + 40;
+  } else if(lugar === 4 || lugar === 5 || lugar === 6 || lugar === 21 || lugar === 24 || lugar === 14 || lugar === 15 || lugar === 16 || lugar === 17 || lugar === 18) {
+    this.img = new Image();
+    this.img.src = 'Images/escuderoHumano.png';
+    this.px = 741;
+    this.py = 114;
+    this.w = this.width + 20;
+    this.h = this.height + 40;
+  } else if(lugar === 7 || lugar === 10 || lugar === 15 || lugar === 19) {
+    this.img = new Image();
+    this.img.src = 'Images/escuderoHumano.png';
+    this.px = 77;
+    this.py = 5;
+    this.w = this.width + 20;
+    this.h = this.height + 40;
+  } else if(lugar === 8 || lugar === 12 || lugar === 17 || lugar === 22) {
+    this.img = new Image();
+    this.img.src = 'Images/escuderoHumano.png';
+    this.px = 741;
+    this.py = 114;
+    this.w = this.width + 20;
+    this.h = this.height + 40;
+  }
+}
+
+else if (clase === 3000) {
+  if(lugar === 1 || lugar === 2 || lugar === 3 || lugar === 20 || lugar === 23 || lugar === 9 || lugar === 10 || lugar === 11 || lugar === 12 || lugar === 13) {
+    this.img = new Image();
+    this.img.src = 'Images/caballeroHumano.png';
+    this.px = 879;
+    this.py = 39;
+    this.w = this.width + 120;
+    this.h = this.height + 70;
+  } else if(lugar === 4 || lugar === 5 || lugar === 6 || lugar === 21 || lugar === 24 || lugar === 14 || lugar === 15 || lugar === 16 || lugar === 17 || lugar === 18) {
+    this.img = new Image();
+    this.img.src = 'Images/caballeroHumano.png';
+    this.px = 1518;
+    this.py = 45;
+    this.w = this.width + 120;
+    this.h = this.height + 70;
+  } else if(lugar === 7 || lugar === 10 || lugar === 15 || lugar === 19) {
+    this.img = new Image();
+    this.img.src = 'Images/caballeroHumano.png';
+    this.px = 879;
+    this.py = 39;
+    this.w = this.width + 120;
+    this.h = this.height + 70;
+  } else if(lugar === 8 || lugar === 12 || lugar === 17 || lugar === 22) {
+    this.img = new Image();
+    this.img.src = 'Images/caballeroHumano.png';
+    this.px = 1518;
+    this.py = 45;
+    this.w = this.width + 120;
+    this.h = this.height + 70;
+  }
+}
 
   this.update = function () {
     ctx = myGameArea.context;
-    if(clase === 1000) {
-      ctx.fillStyle = "lightblue";
-    } else if (clase === 2000) {
-      ctx.fillStyle = "lightyellow";
-    } else {
-      ctx.fillStyle = "white";
-    }
-    ctx.fillRect(this.x, this.y, this.width, this.height);
+      ctx.drawImage( 
+        this.img,
+        this.px, //posición de origen - x
+        this.py, // posición de origen - y
+        this.w, // ancho en el origen (a partir de la posición)
+        this.h, // alto en el origen (a partir de la posición)
+        this.x, //movimiento en x
+        this.y, //movimiento en y
+        this.width,
+        this.height
+        );
   };
   
   this.newPos = function () {
-    if (this.x === 1030 && lugar === 1) {
+    if (this.x === Math.floor((myGameArea.canvas.width - 70) / 10) * 10 /*1030*/ && lugar === 1) {
       if (this.movementX === 5) {
         this.x;
       } else {
@@ -464,7 +580,7 @@ if (clase === 1000) {
      }
     } 
     
-    else if (this.x === 1030 && lugar === 2) {
+    else if (this.x === Math.floor((myGameArea.canvas.width - 70) / 10) * 10 /*1030*/ && lugar === 2) {
       if (this.movementX === 5) {
         this.x;
     } else {
@@ -478,7 +594,7 @@ if (clase === 1000) {
     }
   } 
   
-  else if (this.x === 1030 && lugar === 3) {
+  else if (this.x === Math.floor((myGameArea.canvas.width - 70) / 10) * 10 /*1030*/ && lugar === 3) {
     if (this.movementX === 5) {
       this.x;
   } else {
@@ -492,7 +608,7 @@ if (clase === 1000) {
   }
 } 
 
-  else if (this.x === 950 && lugar === 4) {
+  else if (this.x === Math.floor((myGameArea.canvas.width - 150) / 10) * 10 /*950*/ && lugar === 4) {
       if (this.movementX === 5) {
         this.x;
     } else {
@@ -506,7 +622,7 @@ if (clase === 1000) {
     }
   } 
 
-  else if (this.x === 950 && lugar === 5) {
+  else if (this.x === Math.floor((myGameArea.canvas.width - 150) / 10) * 10 /*950*/ && lugar === 5) {
     if (this.movementX === 5) {
       this.x;
   } else {
@@ -520,7 +636,7 @@ if (clase === 1000) {
   }
 } 
 
-else if (this.x === 950 && lugar === 6) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 150) / 10) * 10 /*950*/ && lugar === 6) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -534,7 +650,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 990 && lugar === 7) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 110) / 10) * 10 /*990*/ && lugar === 7) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -548,7 +664,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 990 && lugar === 8) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 110) / 10) * 10 /*990*/ && lugar === 8) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -562,7 +678,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 1070 && lugar === 9) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 30) / 10) * 10 /*1070*/ && lugar === 9) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -576,7 +692,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 1070 && lugar === 10) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 30) / 10) * 10 /*1070*/ && lugar === 10) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -590,7 +706,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 1070 && lugar === 11) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 30) / 10) * 10 /*1070*/ && lugar === 11) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -604,7 +720,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 1070 && lugar === 12) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 30) / 10) * 10 /*1070*/ && lugar === 12) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -618,7 +734,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 1070 && lugar === 13) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 30) / 10) * 10 /*1070*/ && lugar === 13) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -632,7 +748,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 910 && lugar === 14) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 190) / 10) * 10 /*910*/ && lugar === 14) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -646,7 +762,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 910 && lugar === 15) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 190) / 10) * 10 /*910*/ && lugar === 15) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -660,7 +776,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 910 && lugar === 16) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 190) / 10) * 10 /*910*/ && lugar === 16) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -674,7 +790,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 910 && lugar === 17) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 190) / 10) * 10 /*910*/ && lugar === 17) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -688,7 +804,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 910 && lugar === 18) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 190) / 10) * 10 /*910*/ && lugar === 18) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -702,7 +818,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 990 && lugar === 19) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 110) / 10) * 10 /*990*/ && lugar === 19) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -716,7 +832,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 1030 && lugar === 20) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 70) / 10) * 10 /*1030*/ && lugar === 20) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -730,7 +846,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 950 && lugar === 21) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 150) / 10) * 10 /*950*/ && lugar === 21) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -744,7 +860,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 990 && lugar === 22) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 110) / 10) * 10 /*990*/ && lugar === 22) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -758,7 +874,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 1030 && lugar === 23) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 70) / 10) * 10 /*1030*/ && lugar === 23) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -772,7 +888,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 950 && lugar === 24) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 150) / 10) * 10 /*950*/ && lugar === 24) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -1156,34 +1272,34 @@ if (this.movementY === -5) {
 function Flecha (x, y, dir) {
   this.x = x;
   this.y = y;
-  this.width = 5;
-  this.height = 5;
-  this.maxRange = 80;
+  this.width = 15;
+  this.height = 15;
+  this.maxRange = 60;
   this.attack = 2000;
   this.dir = dir;
   this.newPos = function () {
-    if (this.maxRange > 0 && this.x > player.right() /*|| this.maxRange > 0 && dir === 1 ||
+    if (this.maxRange > 0 && dir === 0 || this.maxRange > 0 && dir === 1 ||
       this.maxRange > 0 && dir === 2 || this.maxRange > 0 && dir === 8 ||
       this.maxRange > 0 && dir === 9 || this.maxRange > 0 && dir === 10 ||
-      this.maxRange > 0 && dir === 11 || this.maxRange > 0 && dir === 12*/) {
+      this.maxRange > 0 && dir === 11 || this.maxRange > 0 && dir === 12) {
       this.x += 7;
       this.maxRange -= 7;
     } 
-    else if (this.maxRange > 0 && this.x < player.left() /*|| this.maxRange > 0 && dir === 4 ||
+    else if (this.maxRange > 0 && dir === 3 || this.maxRange > 0 && dir === 4 ||
       this.maxRange > 0 && dir === 5 || this.maxRange > 0 && dir === 13 ||
       this.maxRange > 0 && dir === 14 || this.maxRange > 0 && dir === 15 ||
       this.maxRange > 0 && dir === 16 || this.maxRange > 0 && dir === 17 ||
-      this.maxRange > 0 && dir === 24*/) {
+      this.maxRange > 0 && dir === 24) {
       this.x -= 7;
       this.maxRange -= 7;
     }
-    else if (this.maxRange > 0 && this.y > player.bottom() /*|| this.maxRange > 0 && dir === 18 ||
-      this.maxRange > 0 && dir === 19 || this.maxRange > 0 && dir === 20*/) {
+    else if (this.maxRange > 0 && dir === 6 || this.maxRange > 0 && dir === 18 ||
+      this.maxRange > 0 && dir === 19 || this.maxRange > 0 && dir === 20) {
       this.y += 7;
       this.maxRange -= 7;
     }
-    else if (this.maxRange > 0 && this.y < player.top() /*|| this.maxRange > 0 && dir === 21 ||
-      this.maxRange > 0 && dir === 22 || this.maxRange > 0 && dir === 23*/) {
+    else if (this.maxRange > 0 && dir === 7 || this.maxRange > 0 && dir === 21 ||
+      this.maxRange > 0 && dir === 22 || this.maxRange > 0 && dir === 23) {
       this.y -= 7;
       this.maxRange -= 7;
     }
@@ -1207,10 +1323,49 @@ function Flecha (x, y, dir) {
     }
   }
 
+  if(dir === 0 || dir === 1 || dir === 2 || dir === 8 || dir === 9 || dir === 10 || dir === 11 || dir === 12) {
+    this.img = new Image();
+    this.img.src = 'Images/arqueraHumana.png';
+    this.px = 651;
+    this.py = 73;
+    this.w = this.width + 40;
+    this.h = this.height + 10;
+  } else if(dir === 3 || dir === 4 || dir === 5 || dir === 13 || dir === 14 || dir === 15 || dir === 16 || dir === 17 || dir === 24) {
+    this.img = new Image();
+    this.img.src = 'Images/arqueraHumana.png';
+    this.px = 651;
+    this.py = 108;
+    this.w = this.width + 40;
+    this.h = this.height + 10;
+  } else if(dir === 3 || dir === 6 || dir === 18 || dir === 19 || dir === 20) {
+    this.img = new Image();
+    this.img.src = 'Images/arqueraHumana.png';
+    this.px = 680;
+    this.py = 138;
+    this.w = this.width + 10;
+    this.h = this.height + 40;
+  } else if(dir === 7 || dir === 6 || dir === 21 || dir === 22 || dir === 23) {
+    this.img = new Image();
+    this.img.src = 'Images/arqueraHumana.png';
+    this.px = 655;
+    this.py = 138;
+    this.w = this.width + 10;
+    this.h = this.height + 40;
+  }
+
   this.update = function () {
     ctx = myGameArea.context;
-    ctx.fillStyle = "black";
-    ctx.fillRect(this.x, this.y, this.width, this.height);
+    ctx.drawImage( 
+      this.img,
+      this.px, //posición de origen - x
+      this.py, // posición de origen - y
+      this.w, // ancho en el origen (a partir de la posición)
+      this.h, // alto en el origen (a partir de la posición)
+      this.x, //movimiento en x
+      this.y, //movimiento en y
+      this.width,
+      this.height
+      );
   }
 
   this.left = function () {
@@ -1351,20 +1506,132 @@ function Soldier2 (lugar, clase) {
     this.attack = 100000;
   }
 
-  this.update = function () {
-    ctx = myGameArea.context;
-    if(clase === 1000) {
-      ctx.fillStyle = "lightblue";
-    } else if (clase === 2000) {
-      ctx.fillStyle = "lightyellow";
-    } else {
-      ctx.fillStyle = "white";
+  if (clase === 1000) {
+    this.life = 50;
+    this.attack = 1;
+    this.class = 'arquero'
+  } else if (clase === 2000) {
+    this.life = 500000;
+    this.attack = 10;
+    this.class = 'escudero';
+  } else if (clase === 3000) {
+    this.life = 1000;
+    this.class = 'caballero';
+    this.attack = 100000;
+  }
+  if (clase === 1000) {
+    if(lugar === 1 || lugar === 2 || lugar === 3 || lugar === 20 || lugar === 23 || lugar === 9 || lugar === 10 || lugar === 11 || lugar === 12 || lugar === 13) {
+      this.img = new Image();
+      this.img.src = 'Images/arqueroOrco.png';
+      this.px = 283;
+      this.py = 201;
+      this.w = this.width + 40;
+      this.h = this.height + 50;
+    } else if(lugar === 4 || lugar === 5 || lugar === 6 || lugar === 21 || lugar === 24 || lugar === 14 || lugar === 15 || lugar === 16 || lugar === 17 || lugar === 18) {
+      this.img = new Image();
+      this.img.src = 'Images/arqueroOrco.png';
+      this.px = 544;
+      this.py = 87;
+      this.w = this.width + 40;
+      this.h = this.height + 50;
+    } else if(lugar === 7 || lugar === 10 || lugar === 15 || lugar === 19) {
+      this.img = new Image();
+      this.img.src = 'Images/arqueroOrco.png';
+      this.px = 283;
+      this.py = 201;
+      this.w = this.width + 40;
+      this.h = this.height + 50;
+    } else if(lugar === 8 || lugar === 12 || lugar === 17 || lugar === 22) {
+      this.img = new Image();
+      this.img.src = 'Images/arqueroOrco.png';
+      this.px = 544;
+      this.py = 87;
+      this.w = this.width + 40;
+      this.h = this.height + 50;
     }
-    ctx.fillRect(this.x, this.y, this.width, this.height);
-  };
+  }
+  
+  else if (clase === 2000) {
+    if(lugar === 1 || lugar === 2 || lugar === 3 || lugar === 20 || lugar === 23 || lugar === 9 || lugar === 10 || lugar === 11 || lugar === 12 || lugar === 13) {
+      this.img = new Image();
+      this.img.src = 'Images/escuderoOrco.png';
+      this.px = 382;
+      this.py = 19;
+      this.w = this.width + 50;
+      this.h = this.height + 60;
+    } else if(lugar === 4 || lugar === 5 || lugar === 6 || lugar === 21 || lugar === 24 || lugar === 14 || lugar === 15 || lugar === 16 || lugar === 17 || lugar === 18) {
+      this.img = new Image();
+      this.img.src = 'Images/escuderoOrco.png';
+      this.px = 376;
+      this.py = 108;
+      this.w = this.width + 50;
+      this.h = this.height + 60;
+    } else if(lugar === 7 || lugar === 10 || lugar === 15 || lugar === 19) {
+      this.img = new Image();
+      this.img.src = 'Images/escuderoOrco.png';
+      this.px = 382;
+      this.py = 19;
+      this.w = this.width + 50;
+      this.h = this.height + 60;
+    } else if(lugar === 8 || lugar === 12 || lugar === 17 || lugar === 22) {
+      this.img = new Image();
+      this.img.src = 'Images/escuderoOrco.png';
+      this.px = 376;
+      this.py = 108;
+      this.w = this.width + 50;
+      this.h = this.height + 60;
+    }
+  }
+  
+  else if (clase === 3000) {
+    if(lugar === 1 || lugar === 2 || lugar === 3 || lugar === 20 || lugar === 23 || lugar === 9 || lugar === 10 || lugar === 11 || lugar === 12 || lugar === 13) {
+      this.img = new Image();
+      this.img.src = 'Images/caballeroOrco.png';
+      this.px = 166;
+      this.py = 496;
+      this.w = this.width + 55;
+      this.h = this.height + 50;
+    } else if(lugar === 4 || lugar === 5 || lugar === 6 || lugar === 21 || lugar === 24 || lugar === 14 || lugar === 15 || lugar === 16 || lugar === 17 || lugar === 18) {
+      this.img = new Image();
+      this.img.src = 'Images/caballeroOrco.png';
+      this.px = 165;
+      this.py = 589;
+      this.w = this.width + 55;
+      this.h = this.height + 50;
+    } else if(lugar === 7 || lugar === 10 || lugar === 15 || lugar === 19) {
+      this.img = new Image();
+      this.img.src = 'Images/caballeroOrco.png';
+      this.px = 0;
+      this.py = 402;
+      this.w = this.width + 50;
+      this.h = this.height + 50;
+    } else if(lugar === 8 || lugar === 12 || lugar === 17 || lugar === 22) {
+      this.img = new Image();
+      this.img.src = 'Images/caballeroOrco.png';
+      this.px = 94;
+      this.py = 673;
+      this.w = this.width + 50;
+      this.h = this.height + 50;
+    }
+  }
+  
+    this.update = function () {
+      ctx = myGameArea.context;
+        ctx.drawImage( 
+          this.img,
+          this.px, //posición de origen - x
+          this.py, // posición de origen - y
+          this.w, // ancho en el origen (a partir de la posición)
+          this.h, // alto en el origen (a partir de la posición)
+          this.x, //movimiento en x
+          this.y, //movimiento en y
+          this.width,
+          this.height
+          );
+    };
   
   this.newPos = function () {
-    if (this.x === 1030 && lugar === 1) {
+    if (this.x === Math.floor((myGameArea.canvas.width - 70) / 10) * 10 && lugar === 1) {
       if (this.movementX === 5) {
         this.x;
       } else {
@@ -1378,7 +1645,7 @@ function Soldier2 (lugar, clase) {
      }
     } 
     
-    else if (this.x === 1030 && lugar === 2) {
+    else if (this.x === Math.floor((myGameArea.canvas.width - 70) / 10) * 10 && lugar === 2) {
       if (this.movementX === 5) {
         this.x;
     } else {
@@ -1392,7 +1659,7 @@ function Soldier2 (lugar, clase) {
     }
   } 
   
-  else if (this.x === 1030 && lugar === 3) {
+  else if (this.x === Math.floor((myGameArea.canvas.width - 70) / 10) * 10 && lugar === 3) {
     if (this.movementX === 5) {
       this.x;
   } else {
@@ -1406,7 +1673,7 @@ function Soldier2 (lugar, clase) {
   }
 } 
 
-  else if (this.x === 950 && lugar === 4) {
+  else if (this.x === Math.floor((myGameArea.canvas.width - 150) / 10) * 10 && lugar === 4) {
       if (this.movementX === 5) {
         this.x;
     } else {
@@ -1420,7 +1687,7 @@ function Soldier2 (lugar, clase) {
     }
   } 
 
-  else if (this.x === 950 && lugar === 5) {
+  else if (this.x === Math.floor((myGameArea.canvas.width - 150) / 10) * 10 && lugar === 5) {
     if (this.movementX === 5) {
       this.x;
   } else {
@@ -1434,7 +1701,7 @@ function Soldier2 (lugar, clase) {
   }
 } 
 
-else if (this.x === 950 && lugar === 6) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 150) / 10) * 10 && lugar === 6) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -1448,7 +1715,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 990 && lugar === 7) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 110) / 10) * 10 && lugar === 7) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -1462,7 +1729,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 990 && lugar === 8) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 110) / 10) * 10 && lugar === 8) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -1476,7 +1743,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 1070 && lugar === 9) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 30) / 10) * 10 && lugar === 9) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -1490,7 +1757,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 1070 && lugar === 10) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 30) / 10) * 10 && lugar === 10) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -1504,7 +1771,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 1070 && lugar === 11) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 30) / 10) * 10 && lugar === 11) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -1518,7 +1785,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 1070 && lugar === 12) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 30) / 10) * 10 && lugar === 12) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -1532,7 +1799,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 1070 && lugar === 13) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 30) / 10) * 10 && lugar === 13) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -1546,7 +1813,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 910 && lugar === 14) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 190) / 10) * 10 && lugar === 14) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -1560,7 +1827,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 910 && lugar === 15) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 190) / 10) * 10 && lugar === 15) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -1574,7 +1841,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 910 && lugar === 16) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 190) / 10) * 10 && lugar === 16) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -1588,7 +1855,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 910 && lugar === 17) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 190) / 10) * 10 && lugar === 17) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -1602,7 +1869,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 910 && lugar === 18) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 190) / 10) * 10 && lugar === 18) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -1616,7 +1883,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 990 && lugar === 19) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 110) / 10) * 10 && lugar === 19) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -1630,7 +1897,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 1030 && lugar === 20) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 70) / 10) * 10 && lugar === 20) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -1644,7 +1911,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 950 && lugar === 21) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 150) / 10) * 10 && lugar === 21) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -1658,7 +1925,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 990 && lugar === 22) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 110) / 10) * 10 && lugar === 22) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -1672,7 +1939,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 1030 && lugar === 23) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 70) / 10) * 10 && lugar === 23) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -1686,7 +1953,7 @@ if (this.movementX === -5) {
 }
 } 
 
-else if (this.x === 950 && lugar === 24) {
+else if (this.x === Math.floor((myGameArea.canvas.width - 150) / 10) * 10 && lugar === 24) {
   if (this.movementX === 5) {
     this.x;
 } else {
@@ -2126,6 +2393,7 @@ function moveLeft2() {
 var map = {};
 
 onkeydown = onkeyup = function (e) {
+  e.preventDefault ();
   e = e || this.event;
   map [e.keyCode] = e.type == 'keydown';
   if (map[87] && map[38]) {
@@ -2195,7 +2463,21 @@ onkeydown = onkeyup = function (e) {
   } else if (map[37] && map[68]) {
     moveLeft();
     moveRight2();
-  }
+  } 
+  else if (map[73]) {
+    changeArmy(1000);
+  } else if (map[79]) {
+    changeArmy(2000);
+  } else if (map[80]) {
+    changeArmy(3000)
+  } 
+  else if (map[82]) {
+    changeArmy2(1000);
+  } else if (map[84]) {
+    changeArmy2(2000);
+  } else if (map[89]) {
+    changeArmy2(3000)
+  } 
   else if (!map[65] && !map[68] && !map[83] && !map[87] && !map[37] && !map[38] && !map[39] && !map[40]) {
     stopMove();
     stopMove2();
@@ -2208,17 +2490,32 @@ onkeydown = onkeyup = function (e) {
   } 
 }
 
-// $(function() {
+function changeArmy(type) {
+  army1 = [];
+  console.log(army1)
+  var b = type;
+    for (var i = 1; i < 25; i++){
+    army1.push(new Soldier1 (i,b));
+    }
+    for (var f = 0; f < army1.length; f++) {
+      if (army1[f].class === 'arquero') {
+        flechas1.push(new Flecha(army1[f].x,army1[f].y,f))
+      }
+    }
+}
 
-//   var $body = $(document);
-//   $body.bind('scroll', function() {
-//       // "Desactivar" el scroll horizontal
-//       if ($body.scrollDown() !== 0) {
-//           $body.scrollDown(0);
-//       }
-//   });
-
-// }); 
+function changeArmy2(type) {
+  army2 = [];
+  var b = type;
+    for (var i = 1; i < 25; i++){
+    army2.push(new Soldier2 (i,b));
+    }
+    for (var f = 0; f < army2.length; f++) {
+      if (army2[f].class === 'arquero') {
+        flechas2.push(new Flecha(army2[f].x,army2[f].y,f))
+      }
+    }
+}
 
 function stopMove () {
   player.movementX = 0;
@@ -2237,5 +2534,3 @@ function stopMove2 () {
     army2[i].movementX = 0;
   }
 }
-
-startGame();
