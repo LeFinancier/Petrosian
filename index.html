@@ -5,16 +5,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script type="text/javascript" src="script.js"></script>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/4.1.3/jquery.min.js"></script> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
   <link rel="stylesheet" href="style.css">
   <title>Document</title>
 </head>
 <body>
   <div id="board">
     <button type="button" class="btn btn-primary btn-lg btn-block" onclick="startGame()">Iniciar partida</button>
-    <button type="button" class="btn btn-primary btn-lg btn-block">Instrucciones</button>
+    
+    <button type="button" class="btn btn-primary btn-lg btn-block popup" onclick="myFunction()">
+      Instrucciones
+      <span class="popuptext" id="myPopup">La raza humana ha estado en guerra en contra de la raza de los orcos durante años, <br>
+        sin embargo la batalla final se aproxima. Lleva a tu ejercito al campo de batalla en donde se decidirá el destino final <br>
+        de ambas razas. ¿Quién sobrevivirá?<br>
+        <br>
+        Ambos ejercitos cuentan con arqueros, con escuderos y con caballeros. Pero cuidado, para ser un buen estratega debes <br>
+        considerar que los Arqueros son efectivos en contra de los Caballeros, pero débiles en contra de los Escuderos y los <br>
+        Caballeros son efectivos en contra de los Escuderos, pero débiles en contra de los Arqueros. <br>
+        <br>
+        Caballeros > Escuderos --- Caballeros < Arqueros --- Arqueros < Escuderos<br>
+        <br>
+        El objetivo principal es detener al líder del ejercito enemigo mientras que las tropas procurarán defender a su líder en <br>
+        todo momento, por lo que se moverán a donde vaya su líder. <br>
+        <br>
+        Las victorias se agregarán al marcador general y seguirán aumentando mientras se inicie una nueva batalla<br>
+        Reincie el browser para reiniciar el marcador<br>
+        <br>
+        ¡Éxito en la batalla!<br>
+        <br>
+        <b style="color: red">
+          ARQUEROS HUMANOS - Tecla 'I'<br> 
+          ESCUDEROS HUMANOS - Tecla 'O'<br>
+          CABALLEROS HUMANOS - Tecla 'P'<br>
+          MOVIMIENTO ARRIBA - 'Flecha Arriba'<br>
+          MOVIMIENTO ABAJO - 'Flecha Abajo'<br>
+          MOVIMIENTO DERECHA - 'Flecha Derecha'<br>
+          MOVIMIENTO IZQUIERDA - 'Flecha Izquierda'<br>
+          <br>
+          ARQUEROS ORCOS - Tecla 'R'<br>
+          ESCUDEROS ORCOS - Tecla 'T'<br>
+          CABALLEROS ORCOS - Tecla 'Y'<br>
+          MOVIMIENTO ARRIBA - Tecla 'W'<br>
+          MOVIMIENTO ABAJO - Tecla 'S'<br>
+          MOVIMIENTO DERECHA - Tecla 'D'<br>
+          MOVIMIENTO IZQUIERDA - Tecla 'A'<br> 
+        </b>
+      </span>
+    </button>
     <h1 align="center">Petrosian</h1>
   </div>
-  
 </body>
 </html>

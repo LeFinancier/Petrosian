@@ -16,7 +16,7 @@ function startGame () {
 }
 
 function plyr() {
-  player =  new Character(30, 30, "humano", 900, 300);
+  player =  new Character(30, 30, "humano", 500, 300);
   var b = 1000;
     for (var i = 1; i < 25; i++){
     army1.push(new Soldier1 (i,b));
@@ -137,10 +137,13 @@ function updateGame() {
         console.log('Muere orco');
         myGameArea.puntosHumanos += 1;
         myGameArea.stop();
+        myGameArea.over();
+        
       } else if (army2[i].colition(player)) {
         console.log('Muere humano');
         myGameArea.puntosOrcos += 1;
         myGameArea.stop();
+        myGameArea.over();
       }
     }
   }
@@ -161,6 +164,7 @@ function updateGame() {
         console.log('Muere humano');
         myGameArea.puntosOrcos += 1;
         myGameArea.stop();
+        myGameArea.over();
       }
     }
   
@@ -181,6 +185,7 @@ function updateGame() {
           console.log('Muere orco');
           myGameArea.puntosHumanos += 1;
           myGameArea.stop();
+          myGameArea.over();
         }
       }  
   
@@ -257,6 +262,18 @@ var myGameArea = {
   },
   stop: function () {
     clearInterval(this.interval);
+  },
+  over: function() {
+    this.context.fillStyle = "grey";
+    this.context.fillRect(400, 300, 300, 150);
+
+    this.context.font =  "30px luminari";
+    this.context.fillStyle = "black";
+    this.context.fillText ("¡Batalla finalizada!", 420, 380)
+
+    this.context.font =  "18px serif";
+    this.context.fillStyle = "white";
+    this.context.fillText ("Your final score: "+p, 100, 150)
   }
 };
 
@@ -2533,4 +2550,9 @@ function stopMove2 () {
     army2[i].movementY = 0;
     army2[i].movementX = 0;
   }
+}
+
+function myFunction() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
 }
