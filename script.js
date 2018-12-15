@@ -3,7 +3,6 @@ var army2 = [];
 var flechas2 = [];
 var flechas1 = [];
 
-
 function startGame () {
     army1 = [];
     army2 = [];
@@ -2556,3 +2555,4 @@ function myFunction() {
   var popup = document.getElementById("myPopup");
   popup.classList.toggle("show");
 }
+
